@@ -12,7 +12,15 @@ import java.awt.event.KeyEvent;
 
 public class ApplicationMain {
 
-	private JFrame frmSpaceInvaders = new JFrame();
+	/**
+	 * Only static variable because it needed to be closed from outside of this class.
+	 */
+	
+	private static JFrame frmSpaceInvaders = new JFrame();
+	
+	/**
+	 * Instance variables that will be initialized with other classes.
+	 */
 	
 	private JLabel spaceship = new JLabel();
 	private JLabel infoLabel = new JLabel("Coded by Luis");
@@ -27,11 +35,11 @@ public class ApplicationMain {
 	private List<JLabel> lasers = new ArrayList<JLabel>();
 	private List<JLabel> enemyLasers = new ArrayList<JLabel>();
 	
-	public static JLayeredPane layeredPane = new JLayeredPane();
-	public static JLabel scoreLabel = new JLabel("Score: 0");
-	public static JLabel youWon = new JLabel("YOU WON");
-	public static JLabel gameOverLabel = new JLabel("YOU LOST");
-	public static JLabel background = new JLabel();
+	private JLayeredPane layeredPane = new JLayeredPane();
+	private JLabel scoreLabel = new JLabel("Score: 0");
+	private JLabel youWon = new JLabel("YOU WON");
+	private JLabel gameOverLabel = new JLabel("YOU LOST");
+	private JLabel background = new JLabel();
 	
 	/**
 	 * Launch the application.
@@ -41,6 +49,8 @@ public class ApplicationMain {
 			public void run() {
 				try {
 					ApplicationMain window = new ApplicationMain();
+					window.createWindow();
+					window.startMenu();
 					window.enemyMovement();
 					window.playerShot();
 					window.enemyShot();
@@ -52,13 +62,10 @@ public class ApplicationMain {
 	}
 
 	/**
-	 * Create the application.
+	 * Default Constructor.
 	 */
 	public ApplicationMain() {
 		
-		GameWindow.createWindow(frmSpaceInvaders, layeredPane, background, startLabel);
-
-		startGame(startLabel);
 		
 	}
 
@@ -67,13 +74,21 @@ public class ApplicationMain {
 	 */
 	private void initialize() {
 		
-		GameInfo.createInfoElements(infoPanel, infoLabel, scoreLabel, gameOverLabel, youWon);
+		GameInfo.createInfoElements(infoPanel, infoLabel, scoreLabel, gameOverLabel, youWon, layeredPane);
 		
-		Aliens.createAliens(firstRow, secThirdRow, fourthRow);
+		Aliens.createAliens(firstRow, secThirdRow, fourthRow, layeredPane);
 
-		Player.createPlayer(spaceship, lasers);
+		Player.createPlayer(spaceship, lasers, layeredPane);
 	
 		
+	}
+	
+	private void createWindow() {
+		GameWindow.createWindow(frmSpaceInvaders, layeredPane, background);
+	}
+	
+	private void startMenu() {
+		startGame(startLabel);
 	}
 	
 	private void enemyMovement() {
@@ -84,25 +99,29 @@ public class ApplicationMain {
 	
 	private void playerShot() {
 		
-		Attack.playerShoot(lasers, firstRow, secThirdRow, fourthRow);
+		Attack.playerShoot(lasers, firstRow, secThirdRow, fourthRow, layeredPane, scoreLabel, background, youWon);
 
 	}
 	
 	private void enemyShot() {
 		
-		Attack.enemyShoot(enemyLasers, spaceship);
+		Attack.enemyShoot(enemyLasers, spaceship, layeredPane, background, gameOverLabel);
 		
 	}
 	
+	/**
+	 * Starts game.
+	 * @param startLabel Label needed to have start menu.
+	 */
 	private void startGame(JLabel startLabel) {
 		
 		startLabel.setFont(new Font("Cambria Math", Font.PLAIN, 27));
 		startLabel.setBounds(190, 200, 245, 29);
-		ApplicationMain.layeredPane.setLayer(startLabel, 4);
+		layeredPane.setLayer(startLabel, 4);
 		startLabel.setEnabled(true);
 		startLabel.setVisible(true);
 		startLabel.setForeground(new Color(0, 255, 0));
-		ApplicationMain.layeredPane.add(startLabel);
+		layeredPane.add(startLabel);
 		
 		startLabel.addKeyListener(new KeyAdapter() {
 			@Override
@@ -124,9 +143,27 @@ public class ApplicationMain {
 		
 	}
 	
+	/**
+	 * Resets the game by clearing the JFrame of all initialized components, so they can be reinitialized.
+	 */
 	public static void reset() {
 		
-		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					
+					frmSpaceInvaders.getContentPane().removeAll();
+					ApplicationMain window = new ApplicationMain();
+					window.createWindow();
+					window.startMenu();
+					window.enemyMovement();
+					window.playerShot();
+					window.enemyShot();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 		
 	}
 }

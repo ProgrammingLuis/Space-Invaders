@@ -8,7 +8,15 @@ import javax.swing.JLayeredPane;
 
 public class GameWindow {
 	
-	public static void createWindow(JFrame frmSpaceInvaders, JLayeredPane layeredPane, JLabel background, JLabel startLabel) {
+	/**
+	 * Creates the window where the game will be played.
+	 * @param frmSpaceInvaders the frame where all the game components will go.
+	 * @param layeredPane the layered pane needed to put game components in order.
+	 * @param background the background of the game. In the form of a JLabel with an icon.
+	 */
+	
+	public static void createWindow(JFrame frmSpaceInvaders, JLayeredPane layeredPane, JLabel background) {
+
 
 		frmSpaceInvaders.setIconImage(Toolkit.getDefaultToolkit().getImage(ApplicationMain.class.getResource("/Resource/bigSquid0.png")));
 		frmSpaceInvaders.setTitle("Space Invaders");

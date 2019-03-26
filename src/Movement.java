@@ -13,8 +13,15 @@ public class Movement {
 	static int picNum = 0;
 	static boolean leftOrRight = true;
 	static Random rand = new Random();
-	static int varToShoot = 32;
+	static int varToShoot = 25;
 	
+	/**
+	 * Animates the aliens with a swing timer and two different pictures decided by <code>picNum</code> and generates lasers with <code>varToShoot</code>
+	 * @param firstRow
+	 * @param secThirdRow will animate the first, second, third, and fourth row of aliens.
+	 * @param fourthRow
+	 * @param enemyLasers the generated lasers will be stored here
+	 */
 	public static void enemyMovement(List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow, List<JLabel> enemyLasers) {
 		
 		 ActionListener task = new ActionListener() {
@@ -115,6 +122,11 @@ public class Movement {
 		
 	}
 
+	/**
+	 * Adds a key listener to player spaceship to generate movement and laser shots
+	 * @param spaceship where the key listener will be attached
+	 * @param lasers where the shot lasers will be stored
+	 */
 	public static void playerMovement(JLabel spaceship, List<JLabel> lasers) {
 		spaceship.addKeyListener(new KeyAdapter() {
 			@Override
@@ -142,6 +154,23 @@ public class Movement {
 				}
 			}
 		});
+	}
+	
+	/**
+	 * Shows the enemy exploding.
+	 * @param alienRow row of alien
+	 * @param alien that exploded
+	 */
+	public static void enemyDisappear(List<JLabel> alienRow, JLabel alien) {
+		ActionListener task2 = new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	            
+	        	alien.setVisible(false);
+	          
+	        }};
+	    Timer timer2 = new Timer(100, task2);
+	    timer2.setRepeats(false);
+	    timer2.start();
 	}
 	
 }

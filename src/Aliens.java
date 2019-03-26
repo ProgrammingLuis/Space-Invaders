@@ -2,6 +2,7 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 
 public class Aliens {
 
@@ -23,7 +24,14 @@ public class Aliens {
 	public static int x4 = INIT_X;
 	public static int y4 = y3+XY_VAR;
 	
-	public static void createAliens(List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow) {
+	/**
+	 * creates the aliens
+	 * @param firstRow
+	 * @param secThirdRow the rows of aliens that will be made.
+	 * @param fourthRow
+	 * @param layeredPane where the aliens will be stored.
+	 */
+	public static void createAliens(List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow, JLayeredPane layeredPane) {
 		
 		for(int r = 0; r < 4; r++) {
 			
@@ -33,7 +41,7 @@ public class Aliens {
 					JLabel alien = new JLabel("");
 					alien.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/squid" + "0" + ".png")));
 					alien.setBounds(x1+=XY_VAR, y1, ALIEN_WIDTH, ALIEN_HEIGHT);
-					ApplicationMain.layeredPane.add(alien,0); 
+					layeredPane.add(alien,0); 
 					firstRow.add(alien);
 				}
 				
@@ -43,7 +51,7 @@ public class Aliens {
 					JLabel alien = new JLabel("");
 					alien.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/bigsquid" + "0" + ".png")));
 					alien.setBounds(x2+=XY_VAR, y2, ALIEN_WIDTH, ALIEN_HEIGHT);
-					ApplicationMain.layeredPane.add(alien,0); 
+					layeredPane.add(alien,0); 
 					secThirdRow.add(alien);	
 				}
 				
@@ -53,7 +61,7 @@ public class Aliens {
 					JLabel alien = new JLabel("");
 					alien.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/bigsquid" + "0" + ".png")));
 					alien.setBounds(x3+=XY_VAR, y3, ALIEN_WIDTH, ALIEN_HEIGHT);
-					ApplicationMain.layeredPane.add(alien,0); 
+					layeredPane.add(alien,0); 
 					secThirdRow.add(alien);
 				}
 				
@@ -63,7 +71,7 @@ public class Aliens {
 					JLabel alien = new JLabel("");
 					alien.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/alien" + "0" + ".png")));
 					alien.setBounds(x4+=XY_VAR, y4, ALIEN_WIDTH, ALIEN_HEIGHT);
-					ApplicationMain.layeredPane.add(alien,0); 
+					layeredPane.add(alien,0); 
 					secThirdRow.add(alien);
 				}
 			}
