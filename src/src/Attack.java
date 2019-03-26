@@ -5,6 +5,10 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.Timer;
 
+/*
+* Class where enemy and player attacks happen.
+*/
+
 public class Attack {
 
 	static int score = 0;
