@@ -7,7 +7,18 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
 public class GameLogic {
-
+	
+	/**
+	 * Detects whether lasers are hitting enemies and updates player score.
+	 * @param lasers the lasers that are shot by the player.
+	 * @param firstRow 
+	 * @param secThirdRow the first, second, third, and fourth row of aliens will be checked to see if they have made contact with the lasers.
+	 * @param fourthRow	
+	 * @param scoreLabel score label to be updated.
+	 * @param layeredPane where these elements are stored.
+	 * @param background the background of the game which may be updated with <code>gameIsWon</code>.
+	 * @param youWon the label that will appear forward if <code>gameIsWon</code>
+	 */
 	public static void gameplay(List<JLabel> lasers, List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow, JLabel scoreLabel, JLayeredPane layeredPane, JLabel background, JLabel youWon) {
 		
 		if(HitDetection.enemyHit(lasers, firstRow, secThirdRow, fourthRow)){
@@ -21,6 +32,15 @@ public class GameLogic {
 		
 	}
 	
+	/**
+	 * Checks if there are any remaining aliens.
+	 * @param firstRow
+	 * @param secThirdRow the first, second, third, and fourth row of aliens will be checked to see if they are empty.
+	 * @param fourthRow 
+	 * @param layeredPane the layered pane where elements will be moved.
+	 * @param background will be brought forward to hide remaining elements
+	 * @param youWon will be moved forward to display winning message
+	 */
 	public static void gameIsWon(List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow, JLayeredPane layeredPane, JLabel background, JLabel youWon) {
 		
 		if(firstRow.isEmpty() && secThirdRow.isEmpty() && fourthRow.isEmpty()) {
@@ -66,6 +86,14 @@ public class GameLogic {
 		
 	}
 	
+	/**
+	 * Checks to see if player got hit
+	 * @param spaceship the destroyed spaceship will be moved forward.
+	 * @param enemyLasers the enemy lasers will be cleared since game is over.
+	 * @param layeredPane where the elements are stored.
+	 * @param background the background will be brought forward to hide remaining elements after loss.
+	 * @param gameOverLabel label that will display losing message.
+	 */
 	public static void gameLost(JLabel spaceship, List<JLabel> enemyLasers, JLayeredPane layeredPane, JLabel background, JLabel gameOverLabel) {
 		
 		if(HitDetection.playerHit(enemyLasers, spaceship)){

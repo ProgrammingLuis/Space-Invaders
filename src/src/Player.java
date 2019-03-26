@@ -6,6 +6,12 @@ import javax.swing.JLayeredPane;
 
 public class Player {
 
+	/**
+	 * Creates the player object (the spaceship).
+	 * @param spaceship the element that is being generated (the player).
+	 * @param lasers a spaceship needs a place to store its lasers
+	 * @param layeredPane where the spaceship will be placed
+	 */
 	public static void createPlayer(JLabel spaceship, List<JLabel> lasers, JLayeredPane layeredPane) {
 		
 		layeredPane.setLayer(spaceship, 3);

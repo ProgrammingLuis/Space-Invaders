@@ -9,6 +9,18 @@ public class Attack {
 
 	static int score = 0;
 	
+	/**
+	 * The player shot a laser and it will be drawn on the screen.
+	 * @param lasers where the spaceship's lasers are stored.
+	 * @param firstRow
+	 * @param secThirdRow first, second, third, and fourth row of aliens are needed for <code>GameLogic.gameplay()</code> to detect shots.
+	 * @param fourthRow
+	 * @param layeredPane where the lasers are being displayed
+	 * @param scoreLabel is needed for the <code>GameLogic.gameplay()</code> method.
+	 * @param background is needed for the <code>GameLogic.gameplay()</code> method.
+	 * @param youWon is needed for the <code>GameLogic.gameplay()</code> method.
+	 */
+	
 	public static void playerShoot(List<JLabel> lasers, List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow, JLayeredPane layeredPane, JLabel scoreLabel, JLabel background, JLabel youWon) {
 		
 		ActionListener task1 = new ActionListener() {
@@ -41,6 +53,14 @@ public class Attack {
 		
 	}
 	
+	/**
+	 * The enemy shot so it will be displayed on the screen.
+	 * @param enemyLasers where the enemy lasers are stored
+	 * @param spaceship is needed for <code>GameLogic.gameLost()</code> method.
+	 * @param layeredPane where the shot is stored.
+	 * @param background is needed for <code>GameLogic.gameLost()</code> method.
+	 * @param gameOverLabel is needed for <code>GameLogic.gameLost()</code> method.
+	 */
 	public static void enemyShoot(List<JLabel> enemyLasers, JLabel spaceship, JLayeredPane layeredPane, JLabel background, JLabel gameOverLabel) {
 		        		
 			ActionListener task = new ActionListener() {
@@ -72,5 +92,6 @@ public class Attack {
 		    timer.start();
 		
 	}
+	
 	
 }

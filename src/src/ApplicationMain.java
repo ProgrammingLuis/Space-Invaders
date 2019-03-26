@@ -12,7 +12,15 @@ import java.awt.event.KeyEvent;
 
 public class ApplicationMain {
 
+	/**
+	 * Only static variable because it needed to be closed from outside of this class.
+	 */
+	
 	private static JFrame frmSpaceInvaders = new JFrame();
+	
+	/**
+	 * Instance variables that will be initialized with other classes.
+	 */
 	
 	private JLabel spaceship = new JLabel();
 	private JLabel infoLabel = new JLabel("Coded by Luis");
@@ -54,13 +62,10 @@ public class ApplicationMain {
 	}
 
 	/**
-	 * Create the application.
+	 * Default Constructor.
 	 */
 	public ApplicationMain() {
 		
-		//GameWindow.createWindow(frmSpaceInvaders, layeredPane, background, startLabel);
-
-		//startGame(startLabel);
 		
 	}
 
@@ -79,7 +84,7 @@ public class ApplicationMain {
 	}
 	
 	private void createWindow() {
-		GameWindow.createWindow(frmSpaceInvaders, layeredPane, background, startLabel);
+		GameWindow.createWindow(frmSpaceInvaders, layeredPane, background);
 	}
 	
 	private void startMenu() {
@@ -104,6 +109,10 @@ public class ApplicationMain {
 		
 	}
 	
+	/**
+	 * Starts game.
+	 * @param startLabel Label needed to have start menu functionality.
+	 */
 	private void startGame(JLabel startLabel) {
 		
 		startLabel.setFont(new Font("Cambria Math", Font.PLAIN, 27));
@@ -134,6 +143,9 @@ public class ApplicationMain {
 		
 	}
 	
+	/**
+	 * Resets the game by clearing the JFrame of all initialized components, so they can be reinitialized.
+	 */
 	public static void reset() {
 		
 		EventQueue.invokeLater(new Runnable() {
@@ -141,7 +153,6 @@ public class ApplicationMain {
 				try {
 					
 					frmSpaceInvaders.getContentPane().removeAll();
-					frmSpaceInvaders.repaint();
 					ApplicationMain window = new ApplicationMain();
 					window.createWindow();
 					window.startMenu();

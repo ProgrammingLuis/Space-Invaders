@@ -8,6 +8,15 @@ import javax.swing.border.LineBorder;
 
 public class GameInfo {
 
+	/**
+	 * Creates the informative elements of the game.
+	 * @param infoPanel The panel where these info elements will go.
+	 * @param infoLabel My credits. :)
+	 * @param scoreLabel The player's score will be displayed here.
+	 * @param gameOverLabel Generates the label that appears when the player loses.
+	 * @param youWon Generates the label that appears when the player wins.
+	 * @param layeredPane the layered pane where these elements will be stored until needed.
+	 */
 	public static void createInfoElements(JPanel infoPanel, JLabel infoLabel, JLabel scoreLabel, JLabel gameOverLabel, JLabel youWon, JLayeredPane layeredPane) {
 		
 		infoPanel.setBorder(new LineBorder(new Color(34, 139, 34)));

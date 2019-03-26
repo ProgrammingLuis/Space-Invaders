@@ -24,6 +24,13 @@ public class Aliens {
 	public static int x4 = INIT_X;
 	public static int y4 = y3+XY_VAR;
 	
+	/**
+	 * creates the aliens
+	 * @param firstRow
+	 * @param secThirdRow the rows of aliens that will be made.
+	 * @param fourthRow
+	 * @param layeredPane where the aliens will be stored.
+	 */
 	public static void createAliens(List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow, JLayeredPane layeredPane) {
 		
 		for(int r = 0; r < 4; r++) {
@@ -65,7 +72,7 @@ public class Aliens {
 					alien.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/alien" + "0" + ".png")));
 					alien.setBounds(x4+=XY_VAR, y4, ALIEN_WIDTH, ALIEN_HEIGHT);
 					layeredPane.add(alien,0); 
-					secThirdRow.add(alien);
+					fourthRow.add(alien);
 				}
 			}
 		}

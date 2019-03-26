@@ -1,10 +1,20 @@
 import java.awt.Rectangle;
 import java.util.List;
+
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 
 public class HitDetection {
 
+	/**
+	 * Detects if enemy has been hit by a laser.
+	 * @param lasers where the lasers are stored.
+	 * @param firstRow
+	 * @param secThirdRow all rows of aliens will be checked to see if they have been hit.
+	 * @param fourthRow
+	 * @return true if enemy has been hit, otherwise false
+	 */
 	static boolean enemyHit(List<JLabel> lasers, List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow) {
 		
 		for(JLabel l : lasers) {
@@ -17,9 +27,10 @@ public class HitDetection {
 				
 				if(laser.intersects(enemy)) {
 					
+					f.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/enemyHit.png")));
 					l.setVisible(false);
 					lasers.remove(l);
-					f.setVisible(false);
+					Movement.enemyDisappear(firstRow, f);
 					firstRow.remove(f);
 					return true;
 				}
@@ -32,9 +43,10 @@ public class HitDetection {
 				
 				if(laser.intersects(enemy)) {
 					
+					f.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/enemyHit.png")));
 					l.setVisible(false);
 					lasers.remove(l);
-					f.setVisible(false);
+					Movement.enemyDisappear(secThirdRow, f);
 					secThirdRow.remove(f);
 					return true;
 				}
@@ -47,9 +59,10 @@ public class HitDetection {
 				
 				if(laser.intersects(enemy)) {
 					
+					f.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/enemyHit.png")));
 					l.setVisible(false);
 					lasers.remove(l);
-					f.setVisible(false);
+					Movement.enemyDisappear(fourthRow, f);
 					fourthRow.remove(f);
 					return true;
 				}
@@ -62,6 +75,12 @@ public class HitDetection {
 		
 	}
 	
+	/**
+	 * Detects if player has been hit.
+	 * @param enemyLasers where enemy lasers are stored.
+	 * @param spaceship is going to be checked if it has been hit by an enemy laser.
+	 * @return true if player is hit, otherwise false.
+	 */
 	static boolean playerHit(List<JLabel> enemyLasers, JLabel spaceship) {
 		
 		Rectangle player = new Rectangle(spaceship.getX(),spaceship.getY(),spaceship.getWidth(),spaceship.getHeight());
