@@ -8,6 +8,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
+/**
+* Class where enemy movement and animation is done. Player movement also. 
+*/
+
 public class Movement {
 
 	static int picNum = 0;
