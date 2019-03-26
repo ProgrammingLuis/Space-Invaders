@@ -93,7 +93,6 @@ public class HitDetection {
 			
 			if(laser.intersects(player)) {
 				
-				SoundEffects.playerKilled();
 				return true;
 			}
 				
