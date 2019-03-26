@@ -4,6 +4,10 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 
+/**
+** File with all the sound effects.
+**/
+
 public class SoundEffects {
 
 	private static final String INVADER_KILLED = "src\\Resource\\invaderkilled.wav";  
