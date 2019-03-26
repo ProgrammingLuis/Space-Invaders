@@ -4,6 +4,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
+/**
+* The class where all alien creation is done.
+*/
+
 public class Aliens {
 
 	public static final int ALIEN_WIDTH = 20;
