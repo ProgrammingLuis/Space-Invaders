@@ -18,7 +18,7 @@ public class Movement {
 	static boolean leftOrRight = true;
 	
 	static final Random RAND = new Random();
-	static final int VAR_TO_SHOOT = 20; // edit this to change probability that aliens shoot
+	static final int VAR_TO_SHOOT = 6; // edit this to change probability that aliens shoot
 	
 	/**
 	 * Animates the aliens with a swing timer and two different pictures decided by <code>picNum</code> and generates lasers with <code>VAR_TO_SHOOT</code>
@@ -55,7 +55,7 @@ public class Movement {
 		            		l.setBounds(l.getX()-6, l.getY(), 20, 19);
 		            	} 
 		            	
-		            	if(RAND.nextInt(VAR_TO_SHOOT) == 10) {
+		            	if(RAND.nextInt(VAR_TO_SHOOT) == 3) {
 		            		
 		            		JLabel laser = new JLabel("");
 		        			laser.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/laser.png")));
@@ -83,7 +83,7 @@ public class Movement {
 		            		l.setBounds(l.getX()-6, l.getY(), 20, 19);
 		            	}
 		            	
-		            	if(RAND.nextInt(VAR_TO_SHOOT) == 10) {
+		            	if(RAND.nextInt(VAR_TO_SHOOT) == 3) {
 		            		
 		            		JLabel laser = new JLabel("");
 		        			laser.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/laser.png")));
@@ -111,7 +111,7 @@ public class Movement {
 		            		l.setBounds(l.getX()-6, l.getY(), 20, 19);
 		            	}
 		            	
-		            	if(RAND.nextInt(VAR_TO_SHOOT) == 10) {
+		            	if(RAND.nextInt(VAR_TO_SHOOT) == 3) {
 		            		
 		            		JLabel laser = new JLabel("");
 		        			laser.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/laser.png")));
