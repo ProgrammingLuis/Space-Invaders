@@ -4,6 +4,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
+/**
+* Player class where the spaceship is created.
+*/
+
 public class Player {
 
 	/**
