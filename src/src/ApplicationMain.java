@@ -115,6 +115,8 @@ public class ApplicationMain {
 	 */
 	private void startGame(JLabel startLabel) {
 		
+		SoundEffects.theme();
+		
 		startLabel.setFont(new Font("Cambria Math", Font.PLAIN, 27));
 		startLabel.setBounds(190, 200, 245, 29);
 		layeredPane.setLayer(startLabel, 4);
@@ -129,6 +131,7 @@ public class ApplicationMain {
 				
 				if(e.getKeyCode()== KeyEvent.VK_SPACE){
 					
+					SoundEffects.stopAudio();
 					startLabel.setEnabled(false);
 					startLabel.setVisible(false);
 					initialize();
