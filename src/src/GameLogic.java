@@ -6,6 +6,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
+/**
+*Class where game logic is created.
+*/
+
 public class GameLogic {
 	
 	/**
