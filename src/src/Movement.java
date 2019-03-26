@@ -53,7 +53,7 @@ public class Movement {
 		            		JLabel laser = new JLabel("");
 		        			laser.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/laser.png")));
 		        			laser.setBounds(l.getX()+(l.getWidth()/2), l.getY()+6, 4, 11);
-		        			if(!(enemyLasers.size()>2)) enemyLasers.add(laser);
+		        			if(!(enemyLasers.size()>3)) enemyLasers.add(laser);
 		            		
 		            	}
 		            	
@@ -81,7 +81,7 @@ public class Movement {
 		            		JLabel laser = new JLabel("");
 		        			laser.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/laser.png")));
 		        			laser.setBounds(l.getX()+(l.getWidth()/2), l.getY()+6, 4, 11);
-		        			if(!(enemyLasers.size()>2)) enemyLasers.add(laser);
+		        			if(!(enemyLasers.size()>3)) enemyLasers.add(laser);
 		            		
 		            	}
 		            	
@@ -109,7 +109,7 @@ public class Movement {
 		            		JLabel laser = new JLabel("");
 		        			laser.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/laser.png")));
 		        			laser.setBounds(l.getX()+(l.getWidth()/2), l.getY()+6, 4, 11);
-		        			if(!(enemyLasers.size()>2)) enemyLasers.add(laser);
+		        			if(!(enemyLasers.size()>3)) enemyLasers.add(laser);
 		            		
 		            	}
 		            	
@@ -139,7 +139,11 @@ public class Movement {
 					laser.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/laser.png")));
 					laser.setBounds(spaceship.getX()+(spaceship.getWidth()/2), spaceship.getY()-11, 4, 11);
 					
-					if(lasers.size()<4) lasers.add(laser);
+					if(lasers.size()<4) {
+						
+						SoundEffects.playerShot();
+						lasers.add(laser);
+					}
 
 				}
 				
