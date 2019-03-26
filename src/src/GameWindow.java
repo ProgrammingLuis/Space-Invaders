@@ -6,6 +6,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
+/**
+* Class where the window of the game is created.
+*/
+
 public class GameWindow {
 	
 	/**
