@@ -3,6 +3,9 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+/*
+* Class where hit detection functionality is created.
+*/
 
 public class HitDetection {
 
