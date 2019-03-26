@@ -1,6 +1,5 @@
 import java.awt.Rectangle;
 import java.util.List;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -27,6 +26,7 @@ public class HitDetection {
 				
 				if(laser.intersects(enemy)) {
 					
+					SoundEffects.invaderKilled();
 					f.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/enemyHit.png")));
 					l.setVisible(false);
 					lasers.remove(l);
@@ -43,6 +43,7 @@ public class HitDetection {
 				
 				if(laser.intersects(enemy)) {
 					
+					SoundEffects.invaderKilled();
 					f.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/enemyHit.png")));
 					l.setVisible(false);
 					lasers.remove(l);
@@ -59,6 +60,7 @@ public class HitDetection {
 				
 				if(laser.intersects(enemy)) {
 					
+					SoundEffects.invaderKilled();
 					f.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/enemyHit.png")));
 					l.setVisible(false);
 					lasers.remove(l);
@@ -91,6 +93,7 @@ public class HitDetection {
 			
 			if(laser.intersects(player)) {
 				
+				SoundEffects.playerKilled();
 				return true;
 			}
 				
