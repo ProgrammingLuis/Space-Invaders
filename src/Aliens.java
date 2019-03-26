@@ -72,7 +72,7 @@ public class Aliens {
 					alien.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/alien" + "0" + ".png")));
 					alien.setBounds(x4+=XY_VAR, y4, ALIEN_WIDTH, ALIEN_HEIGHT);
 					layeredPane.add(alien,0); 
-					secThirdRow.add(alien);
+					fourthRow.add(alien);
 				}
 			}
 		}
