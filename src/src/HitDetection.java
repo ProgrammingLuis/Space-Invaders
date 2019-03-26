@@ -83,6 +83,8 @@ public class HitDetection {
 	 * @param spaceship is going to be checked if it has been hit by an enemy laser.
 	 * @return true if player is hit, otherwise false.
 	 */
+	
+	// Triggers randomly after first death. NEED TO FIX!!!
 	static boolean playerHit(List<JLabel> enemyLasers, JLabel spaceship) {
 		
 		Rectangle player = new Rectangle(spaceship.getX(),spaceship.getY(),spaceship.getWidth(),spaceship.getHeight());
