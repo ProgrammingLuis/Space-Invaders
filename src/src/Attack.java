@@ -75,6 +75,8 @@ public class Attack {
 		        			if(l.getY()>=331) {
 		        				enemyLasers.remove(l);
 		        				l.setVisible(false);
+		        				layeredPane.remove(l);
+		        				l.setEnabled(false);
 		        				
 		        			}
 		        			

@@ -156,12 +156,7 @@ public class ApplicationMain {
 				try {
 					
 					frmSpaceInvaders.getContentPane().removeAll();
-					ApplicationMain window = new ApplicationMain();
-					window.createWindow();
-					window.startMenu();
-					window.enemyMovement();
-					window.playerShot();
-					window.enemyShot();
+					main(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

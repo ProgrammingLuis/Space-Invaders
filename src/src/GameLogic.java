@@ -94,10 +94,11 @@ public class GameLogic {
 	 * @param background the background will be brought forward to hide remaining elements after loss.
 	 * @param gameOverLabel label that will display losing message.
 	 */
+
 	public static void gameLost(JLabel spaceship, List<JLabel> enemyLasers, JLayeredPane layeredPane, JLabel background, JLabel gameOverLabel) {
 		
 		if(HitDetection.playerHit(enemyLasers, spaceship)){
-
+			
 			spaceship.setDisabledIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/spaceshipHit.png")));
 			spaceship.setEnabled(false);
 			enemyLasers.clear();
@@ -105,7 +106,7 @@ public class GameLogic {
 			layeredPane.setLayer(background, 2);
 			layeredPane.setLayer(gameOverLabel,3);
 			
-			Attack.score = 0;
+			//SoundEffects.playerKilled(); Something is wrong with the HitDetection.playerHit logic. It is triggering randomly after the first death. NEED TO FIX.
 			
 			gameOverLabel.addKeyListener(new KeyAdapter() {
 				@Override
@@ -125,6 +126,7 @@ public class GameLogic {
 						Aliens.x4 = Aliens.INIT_X;
 						Aliens.y4 = Aliens.y3+Aliens.XY_VAR;
 						
+						Attack.score = 0;
 						gameOverLabel.setEnabled(false);
 						gameOverLabel.setVisible(false);
 						ApplicationMain.reset();

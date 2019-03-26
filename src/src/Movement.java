@@ -23,6 +23,9 @@ public class Movement {
 	 * @param fourthRow
 	 * @param enemyLasers the generated lasers will be stored here
 	 */
+	
+	//Animations sometimes don't work. NEED TO FIX!!!
+	
 	public static void enemyMovement(List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow, List<JLabel> enemyLasers) {
 		
 		 ActionListener task = new ActionListener() {
@@ -139,7 +142,7 @@ public class Movement {
 					laser.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/laser.png")));
 					laser.setBounds(spaceship.getX()+(spaceship.getWidth()/2), spaceship.getY()-11, 4, 11);
 					
-					if(lasers.size()<4) {
+					if(lasers.size()<3) {
 						
 						SoundEffects.playerShot();
 						lasers.add(laser);
