@@ -6,6 +6,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
+/*
+* Class where the informative elements of the game are made.
+*/
+
 public class GameInfo {
 
 	/**
