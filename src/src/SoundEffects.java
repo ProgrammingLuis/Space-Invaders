@@ -28,25 +28,27 @@ public class SoundEffects {
 	
 	public static void invaderKilled() {
 		
-		createSoundTrack(invaderKilled, INVADER_KILLED, -20.0f);
-		
+		invaderKilled = createSoundTrack(invaderKilled, INVADER_KILLED, -20.0f);
+		invaderKilled.start();
 	}
 	
 	public static void playerKilled() {
 		
-		createSoundTrack(playerKilled, PLAYER_DIED, -10.0f);
-		
+		playerKilled = createSoundTrack(playerKilled, PLAYER_DIED, -10.0f);
+		playerKilled.start();
 	}
 	
 	public static void playerShot() {
 		
-		createSoundTrack(playerShot, PLAYER_SHOT, -20.0f);
+		playerShot = createSoundTrack(playerShot, PLAYER_SHOT, -20.0f);
+		playerShot.start();
 		
 	}
 	
 	public static void theme() {
 		
-		createSoundTrack(theme, THEME, -10.0f);
+		theme = createSoundTrack(theme, THEME, -10.0f);
+		theme.start();
 	}
 	
 	public static void stopAudio() {
@@ -57,17 +59,18 @@ public class SoundEffects {
 	
 	public static void boss() {
 
-		createSoundTrack(boss, BOSS, -10.0f);
-		
+		boss = createSoundTrack(boss, BOSS, -10.0f);
+		boss.start();
 	}
 	
 	/**
-	 * Creates the sound effect clips.
-	 * @param clip the clip to be made
-	 * @param url the url of the sound file
-	 * @param decibels the decibels that you want to raise the volume by. Negative decibel = reduce volume.
+	 * Makes the sound track.
+	 * @param clip the clip that will be made into sound effects
+	 * @param url where the sound file is stored.
+	 * @param decibels what you want to set the volume too. Negative = reduced volume.
+	 * @return the new and improved clip.
 	 */
-	private static void createSoundTrack(Clip clip, String url, float decibels) {
+	private static Clip createSoundTrack(Clip clip, String url, float decibels) {
 		
 		try{AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(url).getAbsoluteFile());
 		clip = AudioSystem.getClip();
@@ -75,7 +78,9 @@ public class SoundEffects {
 		FloatControl gainControl = 
 		(FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 		gainControl.setValue(decibels); // Set volume to decibels.
-		clip.start();}catch(Exception e) {e.printStackTrace();}
+		}catch(Exception e) {e.printStackTrace();}
+		
+		return clip;
 		
 	}
 	
