@@ -27,51 +27,26 @@ public class SoundEffects {
 	private static Clip boss;
 	
 	public static void invaderKilled() {
-	
-		try{AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(INVADER_KILLED).getAbsoluteFile());
-		invaderKilled = AudioSystem.getClip();
-		invaderKilled.open(audioInputStream);
-		FloatControl gainControl = 
-		(FloatControl) invaderKilled.getControl(FloatControl.Type.MASTER_GAIN);
-		gainControl.setValue(-20.0f); // Reduce volume by 20 decibels.
-		invaderKilled.start();}catch(Exception e) {e.printStackTrace();}
+		
+		createSoundTrack(invaderKilled, INVADER_KILLED, -20.0f);
 		
 	}
 	
 	public static void playerKilled() {
 		
-		try{AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(PLAYER_DIED).getAbsoluteFile());
-		playerKilled = AudioSystem.getClip();
-		playerKilled.open(audioInputStream);
-		FloatControl gainControl = 
-		(FloatControl) playerKilled.getControl(FloatControl.Type.MASTER_GAIN);
-		gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
-		playerKilled.start();}catch(Exception e) {e.printStackTrace();}
+		createSoundTrack(playerKilled, PLAYER_DIED, -10.0f);
 		
 	}
 	
 	public static void playerShot() {
 		
-		try{AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(PLAYER_SHOT).getAbsoluteFile());
-		playerShot = AudioSystem.getClip();
-		playerShot.open(audioInputStream);
-		FloatControl gainControl = 
-		(FloatControl) playerShot.getControl(FloatControl.Type.MASTER_GAIN);
-		gainControl.setValue(-20.0f); // Reduce volume by 20 decibels.
-		playerShot.start();}catch(Exception e) {e.printStackTrace();}
+		createSoundTrack(playerShot, PLAYER_SHOT, -20.0f);
 		
 	}
 	
 	public static void theme() {
 		
-		try{AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(THEME).getAbsoluteFile());
-		theme = AudioSystem.getClip();
-		theme.open(audioInputStream);
-		FloatControl gainControl = 
-		(FloatControl) theme.getControl(FloatControl.Type.MASTER_GAIN);
-		gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
-		theme.start();}catch(Exception e) {e.printStackTrace();}
-		
+		createSoundTrack(theme, THEME, -10.0f);
 	}
 	
 	public static void stopAudio() {
@@ -81,14 +56,26 @@ public class SoundEffects {
 	}
 	
 	public static void boss() {
+
+		createSoundTrack(boss, BOSS, -10.0f);
 		
-		try{AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(BOSS).getAbsoluteFile());
-		boss = AudioSystem.getClip();
-		boss.open(audioInputStream);
+	}
+	
+	/**
+	 * Creates the sound effect clips.
+	 * @param clip the clip to be made
+	 * @param url the url of the sound file
+	 * @param decibels the decibels that you want to raise the volume by. Negative decibel = reduce volume.
+	 */
+	private static void createSoundTrack(Clip clip, String url, float decibels) {
+		
+		try{AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(url).getAbsoluteFile());
+		clip = AudioSystem.getClip();
+		clip.open(audioInputStream);
 		FloatControl gainControl = 
-		(FloatControl) boss.getControl(FloatControl.Type.MASTER_GAIN);
-		gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
-		boss.start();}catch(Exception e) {e.printStackTrace();}
+		(FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+		gainControl.setValue(decibels); // Set volume to decibels.
+		clip.start();}catch(Exception e) {e.printStackTrace();}
 		
 	}
 	
