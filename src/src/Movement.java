@@ -146,7 +146,7 @@ public class Movement {
 					laser.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/laser.png")));
 					laser.setBounds(spaceship.getX()+(spaceship.getWidth()/2), spaceship.getY()-11, 4, 11);
 					
-					if(lasers.size()<3) {
+					if(lasers.size()<2) {
 						
 						SoundEffects.playerShot();
 						lasers.add(laser);
