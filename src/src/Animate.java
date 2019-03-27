@@ -34,6 +34,9 @@ public class Animate {
 	public static ImageIcon enemy_Hit;
 	public static ImageIcon player_Hit;
 	
+	/**
+	 * Creates the images for the game.
+	 */
 	public static void createImages() {
 		
 		try {

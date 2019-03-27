@@ -17,12 +17,21 @@ public class SoundEffects {
 	private static final String PLAYER_SHOT = "/Resource/shoot.wav";  
 	private static final String THEME = "/Resource/spaceinvaders1.wav";  
 	private static final String BOSS = "/Resource/ufo_lowpitch.wav";  
+	private static final String BATTLE = "/Resource/battle.wav";
 	
 	private static Clip invaderKilled;
 	private static Clip playerKilled;
 	private static Clip playerShot;
 	private static Clip theme;
 	private static Clip boss;
+	private static Clip battle;
+	
+	public static void battle() {
+		
+		battle = createSoundTrack(battle, BATTLE, 0f);
+		battle.loop(Clip.LOOP_CONTINUOUSLY);
+		
+	}
 	
 	public static void invaderKilled() {
 		
@@ -46,12 +55,18 @@ public class SoundEffects {
 	public static void theme() {
 		
 		theme = createSoundTrack(theme, THEME, -10.0f);
-		theme.start();
+		theme.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 	
-	public static void stopAudio() {
+	public static void stopTheme() {
 		
 		theme.stop();
+		
+	}
+	
+	public static void stopBattle() {
+		
+		battle.stop();
 		
 	}
 	

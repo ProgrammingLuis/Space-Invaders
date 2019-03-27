@@ -28,13 +28,15 @@ public class Attack {
 	 * @param scoreLabel is needed for the <code>GameLogic.gameplay()</code> method.
 	 * @param background is needed for the <code>GameLogic.gameplay()</code> method.
 	 * @param youWon is needed for the <code>GameLogic.gameplay()</code> method.
+	 * @param spaceship is needed for the <code>Movement.updatePlayer()</code> method.
 	 */
 	
-	public static void playerShoot(List<JLabel> lasers, List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow, JLayeredPane layeredPane, JLabel scoreLabel, JLabel background, JLabel youWon, List<JLabel> enemyLasers) {
+	public static void playerShoot(List<JLabel> lasers, List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow, JLayeredPane layeredPane, JLabel scoreLabel, JLabel background, JLabel youWon, List<JLabel> enemyLasers, JLabel spaceship) {
 		
 		ActionListener task1 = new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
 
+	        	Movement.updatePlayer(spaceship); // I put this here because this loops a lot. Perfect for this method.
 	            
 	        	if(!lasers.isEmpty()) {
 	        		

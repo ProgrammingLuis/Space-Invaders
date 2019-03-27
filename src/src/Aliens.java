@@ -13,7 +13,7 @@ public class Aliens {
 	public static final int ALIEN_WIDTH = 20;
 	public static final int ALIEN_HEIGHT = 19;
 	
-	public static final int INIT_X = 218;
+	public static final int INIT_X = 188;
 	public static final int XY_VAR = 30;
 	
 	public static int x1 = INIT_X; 
@@ -41,7 +41,7 @@ public class Aliens {
 			
 			if(r==0) {
 				
-				for(int c = 0; c < 6; c++) {
+				for(int c = 0; c <= 6; c++) {
 					JLabel alien = new JLabel("");
 					alien.setIcon(Animate.squid_0);
 					alien.setBounds(x1+=XY_VAR, y1, ALIEN_WIDTH, ALIEN_HEIGHT);
@@ -51,7 +51,7 @@ public class Aliens {
 				
 			} else if(r==1) {
 				
-				for(int c = 0; c < 6; c++) {
+				for(int c = 0; c <= 6; c++) {
 					JLabel alien = new JLabel("");
 					alien.setIcon(Animate.bigsquid_0);
 					alien.setBounds(x2+=XY_VAR, y2, ALIEN_WIDTH, ALIEN_HEIGHT);
@@ -61,7 +61,7 @@ public class Aliens {
 				
 			} else if(r==2) {
 				
-				for(int c = 0; c < 6; c++) {
+				for(int c = 0; c <= 6; c++) {
 					JLabel alien = new JLabel("");
 					alien.setIcon(Animate.bigsquid_0);
 					alien.setBounds(x3+=XY_VAR, y3, ALIEN_WIDTH, ALIEN_HEIGHT);
@@ -71,7 +71,7 @@ public class Aliens {
 				
 			} else if(r==3) {
 				
-				for(int c = 0; c < 6; c++) {
+				for(int c = 0; c <= 6; c++) {
 					JLabel alien = new JLabel("");
 					alien.setIcon(Animate.alien_0);
 					alien.setBounds(x4+=XY_VAR, y4, ALIEN_WIDTH, ALIEN_HEIGHT);

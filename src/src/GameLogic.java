@@ -44,6 +44,7 @@ public class GameLogic {
 	 * @param layeredPane the layered pane where elements will be moved.
 	 * @param background will be brought forward to hide remaining elements
 	 * @param youWon will be moved forward to display winning message
+	 * @param enemyLasers needs to be cleared when game ends.
 	 */
 	private static void gameIsWon(List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow, JLayeredPane layeredPane, JLabel background, JLabel youWon, List<JLabel> enemyLasers) {
 		
@@ -52,6 +53,10 @@ public class GameLogic {
 			layeredPane.setLayer(background, 2);
 			layeredPane.setLayer(youWon,3);
 			
+			Movement.playerMovingLeft = false;
+			Movement.playerMovingRight = false;
+			
+			SoundEffects.stopBattle();
 			SoundEffects.playBossMusic = true;
 			enemyLasers.clear();
 			
@@ -110,6 +115,10 @@ public class GameLogic {
 			spaceship.setEnabled(false);
 			enemyLasers.clear();
 			
+			Movement.playerMovingLeft = false;
+			Movement.playerMovingRight = false;
+			
+			SoundEffects.stopBattle();
 			SoundEffects.playBossMusic = true;
 			
 			layeredPane.setLayer(background, 2);

@@ -81,6 +81,8 @@ public class ApplicationMain {
 	 */
 	private void initialize() {
 		
+		SoundEffects.battle();
+		
 		GameInfo.createInfoElements(infoPanel, infoLabel, scoreLabel, gameOverLabel, youWon, layeredPane);
 		
 		Aliens.createAliens(firstRow, secThirdRow, fourthRow, layeredPane);
@@ -106,7 +108,7 @@ public class ApplicationMain {
 	
 	private void playerShot() {
 		
-		Attack.playerShoot(lasers, firstRow, secThirdRow, fourthRow, layeredPane, scoreLabel, background, youWon, enemyLasers);
+		Attack.playerShoot(lasers, firstRow, secThirdRow, fourthRow, layeredPane, scoreLabel, background, youWon, enemyLasers, spaceship);
 
 	}
 	
@@ -138,7 +140,7 @@ public class ApplicationMain {
 				
 				if(e.getKeyCode()== KeyEvent.VK_SPACE){
 					
-					SoundEffects.stopAudio();
+					SoundEffects.stopTheme();
 					startLabel.setEnabled(false);
 					startLabel.setVisible(false);
 					initialize();
