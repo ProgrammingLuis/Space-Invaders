@@ -151,7 +151,7 @@ public class Movement {
 		
 		alien.setIcon(Animate.BOSS);
 		
-		if(alien.getX()+Aliens.ALIEN_WIDTH>=513) leftOrRight = false;
+		if(alien.getX()+Aliens.ALIEN_WIDTH+15>=513) leftOrRight = false;
 			if(alien.getX()-20<=100) {
 		            		
 		        alien.setBounds(alien.getX()+40, alien.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
