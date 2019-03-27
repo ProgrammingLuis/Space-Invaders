@@ -12,15 +12,19 @@ import javax.sound.sampled.FloatControl;
 
 public class SoundEffects {
 
+	public static boolean playBossMusic = true;
+	
 	private static final String INVADER_KILLED = "src\\Resource\\invaderkilled.wav";  
 	private static final String PLAYER_DIED = "src\\Resource\\explosion.wav";  
 	private static final String PLAYER_SHOT = "src\\Resource\\shoot.wav";  
 	private static final String THEME = "src\\Resource\\spaceinvaders1.wav";  
+	private static final String BOSS = "src\\Resource\\ufo_lowpitch.wav";  
 	
 	private static Clip invaderKilled;
 	private static Clip playerKilled;
 	private static Clip playerShot;
 	private static Clip theme;
+	private static Clip boss;
 	
 	public static void invaderKilled() {
 	
@@ -73,6 +77,18 @@ public class SoundEffects {
 	public static void stopAudio() {
 		
 		theme.stop();
+		
+	}
+	
+	public static void boss() {
+		
+		try{AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(BOSS).getAbsoluteFile());
+		boss = AudioSystem.getClip();
+		boss.open(audioInputStream);
+		FloatControl gainControl = 
+		(FloatControl) boss.getControl(FloatControl.Type.MASTER_GAIN);
+		gainControl.setValue(-10.0f); // Reduce volume by 10 decibels.
+		boss.start();}catch(Exception e) {e.printStackTrace();}
 		
 	}
 	

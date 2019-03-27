@@ -30,7 +30,7 @@ public class Attack {
 	 * @param youWon is needed for the <code>GameLogic.gameplay()</code> method.
 	 */
 	
-	public static void playerShoot(List<JLabel> lasers, List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow, JLayeredPane layeredPane, JLabel scoreLabel, JLabel background, JLabel youWon) {
+	public static void playerShoot(List<JLabel> lasers, List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow, JLayeredPane layeredPane, JLabel scoreLabel, JLabel background, JLabel youWon, List<JLabel> enemyLasers) {
 		
 		ActionListener task1 = new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
@@ -47,7 +47,7 @@ public class Attack {
 	        				l.setVisible(false);
 	        			}
 	        			
-	        			GameLogic.gameplay(lasers, firstRow, secThirdRow, fourthRow, scoreLabel, layeredPane, background, youWon);
+	        			GameLogic.gameplay(lasers, firstRow, secThirdRow, fourthRow, scoreLabel, layeredPane, background, youWon, enemyLasers);
 	        			
 	        		}} catch(Exception ex) {
 	        			

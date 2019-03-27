@@ -105,7 +105,7 @@ public class ApplicationMain {
 	
 	private void playerShot() {
 		
-		Attack.playerShoot(lasers, firstRow, secThirdRow, fourthRow, layeredPane, scoreLabel, background, youWon);
+		Attack.playerShoot(lasers, firstRow, secThirdRow, fourthRow, layeredPane, scoreLabel, background, youWon, enemyLasers);
 
 	}
 	

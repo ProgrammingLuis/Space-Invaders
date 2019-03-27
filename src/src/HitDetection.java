@@ -34,7 +34,7 @@ public class HitDetection {
 					f.setIcon(Animate.ENEMY_HIT);
 					l.setVisible(false);
 					lasers.remove(l);
-					Movement.enemyDisappear(firstRow, f);
+					Animate.enemyDisappear(firstRow, f);
 					firstRow.remove(f);
 					return true;
 				}
@@ -51,7 +51,7 @@ public class HitDetection {
 					f.setIcon(Animate.ENEMY_HIT);
 					l.setVisible(false);
 					lasers.remove(l);
-					Movement.enemyDisappear(secThirdRow, f);
+					Animate.enemyDisappear(secThirdRow, f);
 					secThirdRow.remove(f);
 					return true;
 				}
@@ -68,7 +68,7 @@ public class HitDetection {
 					f.setIcon(Animate.ENEMY_HIT);
 					l.setVisible(false);
 					lasers.remove(l);
-					Movement.enemyDisappear(fourthRow, f);
+					Animate.enemyDisappear(fourthRow, f);
 					fourthRow.remove(f);
 					return true;
 				}

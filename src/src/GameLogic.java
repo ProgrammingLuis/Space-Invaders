@@ -23,14 +23,14 @@ public class GameLogic {
 	 * @param background the background of the game which may be updated with <code>gameIsWon</code>.
 	 * @param youWon the label that will appear forward if <code>gameIsWon</code>
 	 */
-	public static void gameplay(List<JLabel> lasers, List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow, JLabel scoreLabel, JLayeredPane layeredPane, JLabel background, JLabel youWon) {
+	public static void gameplay(List<JLabel> lasers, List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow, JLabel scoreLabel, JLayeredPane layeredPane, JLabel background, JLabel youWon, List<JLabel> enemyLasers) {
 		
 		if(HitDetection.enemyHit(lasers, firstRow, secThirdRow, fourthRow)){
 			
 			Attack.score += 100;
 			scoreLabel.setText("Score: " + Integer.toString(Attack.score));
 			
-			gameIsWon(firstRow, secThirdRow, fourthRow, layeredPane, background, youWon);
+			gameIsWon(firstRow, secThirdRow, fourthRow, layeredPane, background, youWon, enemyLasers);
 			
 		}
 		
@@ -45,12 +45,15 @@ public class GameLogic {
 	 * @param background will be brought forward to hide remaining elements
 	 * @param youWon will be moved forward to display winning message
 	 */
-	private static void gameIsWon(List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow, JLayeredPane layeredPane, JLabel background, JLabel youWon) {
+	private static void gameIsWon(List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow, JLayeredPane layeredPane, JLabel background, JLabel youWon, List<JLabel> enemyLasers) {
 		
 		if(firstRow.isEmpty() && secThirdRow.isEmpty() && fourthRow.isEmpty()) {
 
 			layeredPane.setLayer(background, 2);
 			layeredPane.setLayer(youWon,3);
+			
+			SoundEffects.playBossMusic = true;
+			enemyLasers.clear();
 			
 			Attack.score = 0;
 			
@@ -107,6 +110,8 @@ public class GameLogic {
 			spaceship.setEnabled(false);
 			enemyLasers.clear();
 			
+			SoundEffects.playBossMusic = true;
+			
 			layeredPane.setLayer(background, 2);
 			layeredPane.setLayer(gameOverLabel,3);
 			
@@ -144,6 +149,37 @@ public class GameLogic {
 			gameOverLabel.requestFocus();
 
 		}
+		
+	}
+	
+	/**
+	 * Checks if one alien is left.
+	 * @param firstRow
+	 * @param secThirdRow checks these rows.
+	 * @param fourthRow
+	 * @return true if alien is left, otherwise false.
+	 */
+	public static boolean oneEnemyLeft(List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow) {
+		
+		if(firstRow.size()+secThirdRow.size()+fourthRow.size()==1) return true;
+		
+		return false;
+	}
+	
+	/**
+	 * Finds the last alien.
+	 * @param firstRow
+	 * @param secThirdRow checks these rows.
+	 * @param fourthRow
+	 * @return the last alien.
+	 */
+	public static JLabel lastAlien(List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow) {
+		
+		if(firstRow.size()==1) return firstRow.get(0);
+		if(secThirdRow.size()==1) return secThirdRow.get(0);
+		if(fourthRow.size()==1) return fourthRow.get(0);
+		
+		return null;
 		
 	}
 	

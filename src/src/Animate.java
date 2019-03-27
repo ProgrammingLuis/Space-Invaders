@@ -1,5 +1,10 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.Timer;
 
 /**
  * Class where the animation happens and where the ImageIcons are stored.
@@ -9,6 +14,8 @@ import javax.swing.JLabel;
 
 public class Animate {
 
+	public static final ImageIcon BOSS = new ImageIcon(ApplicationMain.class.getResource("/Resource/boss.png"), "boss");
+	
 	public static final ImageIcon SQUID_0 = new ImageIcon(ApplicationMain.class.getResource("/Resource/squid0.png"), "squid0");
 	public static final ImageIcon SQUID_1 = new ImageIcon(ApplicationMain.class.getResource("/Resource/squid1.png"), "squid1");
 	
@@ -31,6 +38,8 @@ public class Animate {
 	 */
 	public static void animateAlien(JLabel alien) {
 		
+		if(alien.getIcon()!=BOSS) {
+		
 		if(alien.getIcon()==SQUID_0) alien.setIcon(SQUID_1);
 		else if(alien.getIcon()==SQUID_1) alien.setIcon(SQUID_0);
 		
@@ -40,6 +49,24 @@ public class Animate {
 		if(alien.getIcon()==ALIEN_0) alien.setIcon(ALIEN_1);
 		else if(alien.getIcon()==ALIEN_1) alien.setIcon(ALIEN_0);
 		
+		}
+	}
+	
+	/**
+	 * Makes the enemy disappear after being shot.
+	 * @param alienRow row of alien
+	 * @param alien that exploded
+	 */
+	public static void enemyDisappear(List<JLabel> alienRow, JLabel alien) {
+		ActionListener task2 = new ActionListener() {
+	        public void actionPerformed(ActionEvent e) {
+	            
+	        	alien.setVisible(false);
+	          
+	        }};
+	    Timer timer2 = new Timer(100, task2);
+	    timer2.setRepeats(false);
+	    timer2.start();
 	}
 	
 }

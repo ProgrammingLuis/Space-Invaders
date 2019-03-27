@@ -33,7 +33,9 @@ public class Movement {
 		 ActionListener task = new ActionListener() {
 		        public void actionPerformed(ActionEvent e) {
 		            
-		            for(JLabel l : firstRow) {
+		         if(!GameLogic.oneEnemyLeft(firstRow, secThirdRow, fourthRow)){   
+		        	 
+		        	 	for(JLabel l : firstRow) {
 		          
 		            	Animate.animateAlien(l);
 		            	
@@ -55,7 +57,7 @@ public class Movement {
 		            		JLabel laser = new JLabel("");
 		        			laser.setIcon(Animate.LASER);
 		        			laser.setBounds(l.getX()+(Aliens.ALIEN_WIDTH/2), l.getY()+6, Attack.LASER_WIDTH, Attack.LASER_HEIGHT);
-		        			if(!(enemyLasers.size()>4)) enemyLasers.add(laser);
+		        			if(enemyLasers.size()<3) enemyLasers.add(laser);
 		            		
 		            	}
 		            	
@@ -83,7 +85,7 @@ public class Movement {
 		            		JLabel laser = new JLabel("");
 		        			laser.setIcon(Animate.LASER);
 		        			laser.setBounds(l.getX()+(Aliens.ALIEN_WIDTH/2), l.getY()+6, Attack.LASER_WIDTH, Attack.LASER_HEIGHT);
-		        			if(!(enemyLasers.size()>4)) enemyLasers.add(laser);
+		        			if(enemyLasers.size()<3) enemyLasers.add(laser);
 		            		
 		            	}
 		            	
@@ -111,13 +113,15 @@ public class Movement {
 		            		JLabel laser = new JLabel("");
 		        			laser.setIcon(Animate.LASER);
 		        			laser.setBounds(l.getX()+(Aliens.ALIEN_WIDTH/2), l.getY()+6, Attack.LASER_WIDTH, Attack.LASER_HEIGHT);
-		        			if(!(enemyLasers.size()>3)) enemyLasers.add(laser);
+		        			if(enemyLasers.size()<3) enemyLasers.add(laser);
 		            		
-		            	}
+		            			}
 		            	
-		            	
-		            } 
-		        }
+		            		}
+		            
+		         		} else boss(GameLogic.lastAlien(firstRow, secThirdRow, fourthRow), enemyLasers);
+		         
+		        	} 
 		        };
 		    Timer timer = new Timer(400, task);
 		    timer.setRepeats(true);
@@ -164,21 +168,45 @@ public class Movement {
 	}
 	
 	/**
-	 * Makes the enemy disappear after being shot.
-	 * @param alienRow row of alien
-	 * @param alien that exploded
+	 * Movement of boss alien.
+	 * @param alien alien to be made boss
+	 * @param enemyLasers the stored lasers of the boss
 	 */
-	public static void enemyDisappear(List<JLabel> alienRow, JLabel alien) {
-		ActionListener task2 = new ActionListener() {
-	        public void actionPerformed(ActionEvent e) {
-	            
-	        	alien.setVisible(false);
-	          
-	        }};
-	    Timer timer2 = new Timer(100, task2);
-	    timer2.setRepeats(false);
-	    timer2.start();
+	private static void boss(JLabel alien, List<JLabel> enemyLasers) {
+		
+		if(SoundEffects.playBossMusic) {
+			
+			SoundEffects.boss();
+			SoundEffects.playBossMusic = false;
+			
+		}
+		
+		alien.setIcon(Animate.BOSS);
+		
+		if(alien.getX()+Aliens.ALIEN_WIDTH>=513) leftOrRight = false;
+			if(alien.getX()-20<=100) {
+		            		
+		        alien.setBounds(alien.getX()+40, alien.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
+		        leftOrRight = true;
+		            }
+		            	
+		if(leftOrRight) {
+		    alien.setBounds(alien.getX()+20, alien.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
+		     } else if(!leftOrRight) {
+		     alien.setBounds(alien.getX()-20, alien.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
+		     } 
+		            	
+		    if(RAND.nextInt(VAR_TO_SHOOT) > 2) {
+		            		
+		     JLabel laser = new JLabel("");
+		     laser.setIcon(Animate.LASER);
+		     laser.setBounds(alien.getX()+(Aliens.ALIEN_WIDTH/2), alien.getY()+6, Attack.LASER_WIDTH, Attack.LASER_HEIGHT);
+		     if(!(enemyLasers.size()>6)) enemyLasers.add(laser);
+		            		
+		            	}
+		            	
+		            
+		
 	}
-	
 	
 }
