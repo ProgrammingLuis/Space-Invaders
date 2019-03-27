@@ -4,63 +4,58 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.Random;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.Timer;
 
 /**
-* Class where enemy movement and animation is done. Player movement also. 
-*/
+ * Class where the enemy and player movement is made.
+ * @author programmingLuis
+ *
+ */
 
 public class Movement {
 
-	private static int picNum = 0;
 	private static boolean leftOrRight = true;
 	
 	private static final Random RAND = new Random();
 	private static final int VAR_TO_SHOOT = 6; // edit this to change probability that aliens shoot
 	
 	/**
-	 * Animates the aliens with a swing timer and two different pictures decided by <code>picNum</code> and generates lasers with <code>VAR_TO_SHOOT</code>
+	 * Movement of the aliens.
 	 * @param firstRow
 	 * @param secThirdRow will animate the first, second, third, and fourth row of aliens.
 	 * @param fourthRow
 	 * @param enemyLasers the generated lasers will be stored here
 	 */
 	
-	//Animations sometimes don't work. NEED TO FIX!!!
-	
 	public static void enemyMovement(List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow, List<JLabel> enemyLasers) {
 		
 		 ActionListener task = new ActionListener() {
 		        public void actionPerformed(ActionEvent e) {
 		            
-		            if(picNum==0) picNum++;
-		            else picNum = 0;
-         
 		            for(JLabel l : firstRow) {
 		          
-		            	l.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/squid" + picNum + ".png")));
+		            	Animate.animateAlien(l);
 		            	
-		            	if(firstRow.get(firstRow.size()-1).getX()+l.getWidth()>=513) leftOrRight = false;
+		            	if(firstRow.get(firstRow.size()-1).getX()+Aliens.ALIEN_WIDTH>=513) leftOrRight = false;
 		            	if(firstRow.get(0).getX()<=100) {
 		            		
-		            		firstRow.get(0).setBounds(firstRow.get(0).getX()+12, l.getY(), 20, 19);
+		            		firstRow.get(0).setBounds(firstRow.get(0).getX()+12, l.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
 		            		leftOrRight = true;
 		            	}
 		            	
 		            	if(leftOrRight) {
-		            		l.setBounds(l.getX()+6, l.getY(), 20, 19);
+		            		l.setBounds(l.getX()+6, l.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
 		            	} else if(!leftOrRight) {
-		            		l.setBounds(l.getX()-6, l.getY(), 20, 19);
+		            		l.setBounds(l.getX()-6, l.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
 		            	} 
 		            	
 		            	if(RAND.nextInt(VAR_TO_SHOOT) == 3) {
 		            		
 		            		JLabel laser = new JLabel("");
-		        			laser.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/laser.png")));
-		        			laser.setBounds(l.getX()+(l.getWidth()/2), l.getY()+6, 4, 11);
-		        			if(!(enemyLasers.size()>3)) enemyLasers.add(laser);
+		        			laser.setIcon(Animate.LASER);
+		        			laser.setBounds(l.getX()+(Aliens.ALIEN_WIDTH/2), l.getY()+6, Attack.LASER_WIDTH, Attack.LASER_HEIGHT);
+		        			if(!(enemyLasers.size()>4)) enemyLasers.add(laser);
 		            		
 		            	}
 		            	
@@ -68,27 +63,27 @@ public class Movement {
 		            
 		            for(JLabel l : secThirdRow){
 		            	
-		            	l.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/bigSquid" + picNum + ".png")));
+		            	Animate.animateAlien(l);
 
-		            	if(secThirdRow.get(secThirdRow.size()-1).getX()+l.getWidth()>=513) leftOrRight = false;
+		            	if(secThirdRow.get(secThirdRow.size()-1).getX()+Aliens.ALIEN_WIDTH>=513) leftOrRight = false;
 		            	if(secThirdRow.get(0).getX()<=100) {
 		            		
-		            		secThirdRow.get(0).setBounds(secThirdRow.get(0).getX()+12, l.getY(), 20, 19);
+		            		secThirdRow.get(0).setBounds(secThirdRow.get(0).getX()+12, l.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
 		            		leftOrRight = true;
 		            	}
 		            	
 		            	if(leftOrRight) {
-		            		l.setBounds(l.getX()+6, l.getY(), 20, 19);
+		            		l.setBounds(l.getX()+6, l.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
 		            	} else if(!leftOrRight) {
-		            		l.setBounds(l.getX()-6, l.getY(), 20, 19);
+		            		l.setBounds(l.getX()-6, l.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
 		            	}
 		            	
 		            	if(RAND.nextInt(VAR_TO_SHOOT) == 3) {
 		            		
 		            		JLabel laser = new JLabel("");
-		        			laser.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/laser.png")));
-		        			laser.setBounds(l.getX()+(l.getWidth()/2), l.getY()+6, 4, 11);
-		        			if(!(enemyLasers.size()>3)) enemyLasers.add(laser);
+		        			laser.setIcon(Animate.LASER);
+		        			laser.setBounds(l.getX()+(Aliens.ALIEN_WIDTH/2), l.getY()+6, Attack.LASER_WIDTH, Attack.LASER_HEIGHT);
+		        			if(!(enemyLasers.size()>4)) enemyLasers.add(laser);
 		            		
 		            	}
 		            	
@@ -96,32 +91,32 @@ public class Movement {
 		            
 		            for(JLabel l : fourthRow){
 				          
-		            	l.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/alien" + picNum + ".png")));
+		            	Animate.animateAlien(l);
 
-		            	if(fourthRow.get(fourthRow.size()-1).getX()+l.getWidth()>=513) leftOrRight = false;
+		            	if(fourthRow.get(fourthRow.size()-1).getX()+Aliens.ALIEN_WIDTH>=513) leftOrRight = false;
 		            	if(fourthRow.get(0).getX()<=100) {
 		            		
-		            		fourthRow.get(0).setBounds(fourthRow.get(0).getX()+12, l.getY(), 20, 19);
+		            		fourthRow.get(0).setBounds(fourthRow.get(0).getX()+12, l.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
 		            		leftOrRight = true;
 		            	}
 		            	
 		            	if(leftOrRight) {
-		            		l.setBounds(l.getX()+6, l.getY(), 20, 19);
+		            		l.setBounds(l.getX()+6, l.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
 		            	} else if(!leftOrRight) {
-		            		l.setBounds(l.getX()-6, l.getY(), 20, 19);
+		            		l.setBounds(l.getX()-6, l.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
 		            	}
 		            	
 		            	if(RAND.nextInt(VAR_TO_SHOOT) == 3) {
 		            		
 		            		JLabel laser = new JLabel("");
-		        			laser.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/laser.png")));
-		        			laser.setBounds(l.getX()+(l.getWidth()/2), l.getY()+6, 4, 11);
+		        			laser.setIcon(Animate.LASER);
+		        			laser.setBounds(l.getX()+(Aliens.ALIEN_WIDTH/2), l.getY()+6, Attack.LASER_WIDTH, Attack.LASER_HEIGHT);
 		        			if(!(enemyLasers.size()>3)) enemyLasers.add(laser);
 		            		
 		            	}
 		            	
-		            }
-		            
+		            	
+		            } 
 		        }
 		        };
 		    Timer timer = new Timer(400, task);
@@ -143,8 +138,8 @@ public class Movement {
 				if(e.getKeyCode()== KeyEvent.VK_SPACE){
 					
 					JLabel laser = new JLabel("");
-					laser.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/laser.png")));
-					laser.setBounds(spaceship.getX()+(spaceship.getWidth()/2), spaceship.getY()-11, 4, 11);
+					laser.setIcon(Animate.LASER);
+					laser.setBounds(spaceship.getX()+(Player.SPACESHIP_WIDTH/2), spaceship.getY()-11, Attack.LASER_WIDTH, Attack.LASER_HEIGHT);
 					
 					if(lasers.size()<2) {
 						
@@ -156,12 +151,12 @@ public class Movement {
 				
 				if(e.getKeyCode()== KeyEvent.VK_LEFT){
 					
-					if(!(spaceship.getX()-4<=100))spaceship.setBounds(spaceship.getX()-6, 320, 28, 18);
+					if(!(spaceship.getX()-4<=100))spaceship.setBounds(spaceship.getX()-6, 320, Player.SPACESHIP_WIDTH, Player.SPACESHIP_HEIGHT);
 						
 				}
 				if(e.getKeyCode()== KeyEvent.VK_RIGHT){
 					
-					if(!(spaceship.getX()+spaceship.getWidth()+4>=513))spaceship.setBounds(spaceship.getX()+6, 320, 28, 18);
+					if(!(spaceship.getX()+Player.SPACESHIP_WIDTH+4>=513))spaceship.setBounds(spaceship.getX()+6, 320, Player.SPACESHIP_WIDTH, Player.SPACESHIP_HEIGHT);
 					
 				}
 			}
@@ -169,7 +164,7 @@ public class Movement {
 	}
 	
 	/**
-	 * Shows the enemy exploding.
+	 * Makes the enemy disappear after being shot.
 	 * @param alienRow row of alien
 	 * @param alien that exploded
 	 */
@@ -184,5 +179,6 @@ public class Movement {
 	    timer2.setRepeats(false);
 	    timer2.start();
 	}
+	
 	
 }

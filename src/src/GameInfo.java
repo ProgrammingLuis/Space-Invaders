@@ -7,8 +7,10 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 
 /**
-* Class where the informative elements of the game are made.
-*/
+ * Class where the informative GUI elements of the game are made.
+ * @author programmingLuis
+ *
+ */
 
 public class GameInfo {
 

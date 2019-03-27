@@ -1,12 +1,12 @@
 import java.util.List;
-
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
 /**
-* The class where all alien creation is done.
-*/
+ * Class where the aliens are created.
+ * @author programmingLuis
+ *
+ */
 
 public class Aliens {
 
@@ -43,7 +43,7 @@ public class Aliens {
 				
 				for(int c = 0; c < 6; c++) {
 					JLabel alien = new JLabel("");
-					alien.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/squid" + "0" + ".png")));
+					alien.setIcon(Animate.SQUID_0);
 					alien.setBounds(x1+=XY_VAR, y1, ALIEN_WIDTH, ALIEN_HEIGHT);
 					layeredPane.add(alien,0); 
 					firstRow.add(alien);
@@ -53,7 +53,7 @@ public class Aliens {
 				
 				for(int c = 0; c < 6; c++) {
 					JLabel alien = new JLabel("");
-					alien.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/bigsquid" + "0" + ".png")));
+					alien.setIcon(Animate.BIGSQUID_0);
 					alien.setBounds(x2+=XY_VAR, y2, ALIEN_WIDTH, ALIEN_HEIGHT);
 					layeredPane.add(alien,0); 
 					secThirdRow.add(alien);	
@@ -63,7 +63,7 @@ public class Aliens {
 				
 				for(int c = 0; c < 6; c++) {
 					JLabel alien = new JLabel("");
-					alien.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/bigsquid" + "0" + ".png")));
+					alien.setIcon(Animate.BIGSQUID_0);
 					alien.setBounds(x3+=XY_VAR, y3, ALIEN_WIDTH, ALIEN_HEIGHT);
 					layeredPane.add(alien,0); 
 					secThirdRow.add(alien);
@@ -73,7 +73,7 @@ public class Aliens {
 				
 				for(int c = 0; c < 6; c++) {
 					JLabel alien = new JLabel("");
-					alien.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/alien" + "0" + ".png")));
+					alien.setIcon(Animate.ALIEN_0);
 					alien.setBounds(x4+=XY_VAR, y4, ALIEN_WIDTH, ALIEN_HEIGHT);
 					layeredPane.add(alien,0); 
 					fourthRow.add(alien);

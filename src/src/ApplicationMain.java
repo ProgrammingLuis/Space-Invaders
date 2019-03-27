@@ -10,9 +10,11 @@ import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-/*
-* Main class where the application is launched from.
-*/
+/**
+ * Class where the application is launched from.
+ * @author programmingLuis
+ *
+ */
 
 public class ApplicationMain {
 

@@ -5,13 +5,18 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.Timer;
 
-/*
-* Class where enemy and player attacks happen.
-*/
+/**
+ * Class where the attack functionality is made for both the enemy and the player.
+ * @author programmingLuis
+ *
+ */
 
 public class Attack {
 
-	static int score = 0;
+	public static final int LASER_WIDTH = 4;
+	public static final int LASER_HEIGHT = 11;
+	
+	public static int score = 0;
 	
 	/**
 	 * The player shot a laser and it will be drawn on the screen.
@@ -36,7 +41,7 @@ public class Attack {
 	        		try{for(JLabel l : lasers) {
 	        			
 	        			layeredPane.add(l);
-	        			l.setBounds(l.getX(),l.getY()-3,l.getWidth(),l.getHeight());
+	        			l.setBounds(l.getX(),l.getY()-3,LASER_WIDTH,LASER_HEIGHT);
 	        			if(l.getY()<=64) {
 	        				lasers.remove(l);
 	        				l.setVisible(false);
@@ -75,7 +80,7 @@ public class Attack {
 		        		try{for(JLabel l : enemyLasers) {
 		        			
 		        			layeredPane.add(l);
-		        			l.setBounds(l.getX(),l.getY()+2,l.getWidth(),l.getHeight());
+		        			l.setBounds(l.getX(),l.getY()+2,LASER_WIDTH,LASER_HEIGHT);
 		        			if(l.getY()>=331) {
 		        				enemyLasers.remove(l);
 		        				l.setVisible(false);

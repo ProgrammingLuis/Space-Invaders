@@ -1,14 +1,14 @@
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.List;
-
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
 /**
-*Class where game logic is created.
-*/
+ * Class where the game logic is made.
+ * @author programmingLuis
+ *
+ */
 
 public class GameLogic {
 	
@@ -45,7 +45,7 @@ public class GameLogic {
 	 * @param background will be brought forward to hide remaining elements
 	 * @param youWon will be moved forward to display winning message
 	 */
-	public static void gameIsWon(List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow, JLayeredPane layeredPane, JLabel background, JLabel youWon) {
+	private static void gameIsWon(List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow, JLayeredPane layeredPane, JLabel background, JLabel youWon) {
 		
 		if(firstRow.isEmpty() && secThirdRow.isEmpty() && fourthRow.isEmpty()) {
 
@@ -103,14 +103,14 @@ public class GameLogic {
 		
 		if(HitDetection.playerHit(enemyLasers, spaceship)){
 			
-			spaceship.setDisabledIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/spaceshipHit.png")));
+			spaceship.setDisabledIcon(Animate.PLAYER_HIT);
 			spaceship.setEnabled(false);
 			enemyLasers.clear();
 			
 			layeredPane.setLayer(background, 2);
 			layeredPane.setLayer(gameOverLabel,3);
 			
-			//SoundEffects.playerKilled(); Something is wrong with the HitDetection.playerHit logic. It is triggering randomly after the first death. NEED TO FIX.
+			SoundEffects.playerKilled();
 			
 			gameOverLabel.addKeyListener(new KeyAdapter() {
 				@Override
@@ -142,10 +142,9 @@ public class GameLogic {
 			});
 			
 			gameOverLabel.requestFocus();
-		    
-			
+
 		}
-		return;
+		
 	}
 	
 }

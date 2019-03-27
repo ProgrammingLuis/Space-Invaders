@@ -5,11 +5,16 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
 /**
-* Player class where the spaceship is created.
-*/
+ * Class where the player model, or spaceship, is created.
+ * @author programmingLuis
+ *
+ */
 
 public class Player {
 
+	public static final int SPACESHIP_WIDTH = 28;
+	public static final int SPACESHIP_HEIGHT = 18;
+	
 	/**
 	 * Creates the player object (the spaceship).
 	 * @param spaceship the element that is being generated (the player).
@@ -23,7 +28,7 @@ public class Player {
 		spaceship.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/spaceShip.png")));
 		spaceship.setVisible(true);
 		spaceship.setEnabled(true);
-		spaceship.setBounds(278, 320, 28, 18);
+		spaceship.setBounds(278, 320, SPACESHIP_WIDTH, SPACESHIP_HEIGHT);
 		layeredPane.add(spaceship);
 		spaceship.requestFocus();
 		

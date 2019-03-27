@@ -5,8 +5,10 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 
 /**
-* File with all the sound effects.
-**/
+ * Class where the sound effects were created.
+ * @author programmingLuis
+ * I did not create these sound effects, but downloaded them from the Internet.
+ */
 
 public class SoundEffects {
 
