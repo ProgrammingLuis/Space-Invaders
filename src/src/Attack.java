@@ -50,7 +50,7 @@ public class Attack {
 	        			GameLogic.gameplay(lasers, firstRow, secThirdRow, fourthRow, scoreLabel, layeredPane, background, youWon, enemyLasers);
 	        			
 	        		}} catch(Exception ex) {
-	        			
+	        			ex.printStackTrace();
 	        		}
 	        		
 	        	}
@@ -92,7 +92,7 @@ public class Attack {
 		        			GameLogic.gameLost(spaceship, enemyLasers, layeredPane, background, gameOverLabel);
 		        			
 		        		}} catch(Exception ex) {
-		        			
+		        			ex.printStackTrace();
 		        		}
 		        		
 		        	}

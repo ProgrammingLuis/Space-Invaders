@@ -31,7 +31,7 @@ public class HitDetection {
 				if(laser.intersects(enemy)) {
 					
 					SoundEffects.invaderKilled();
-					f.setIcon(Animate.ENEMY_HIT);
+					f.setIcon(Animate.enemy_Hit);
 					l.setVisible(false);
 					lasers.remove(l);
 					Animate.enemyDisappear(firstRow, f);
@@ -48,7 +48,7 @@ public class HitDetection {
 				if(laser.intersects(enemy)) {
 					
 					SoundEffects.invaderKilled();
-					f.setIcon(Animate.ENEMY_HIT);
+					f.setIcon(Animate.enemy_Hit);
 					l.setVisible(false);
 					lasers.remove(l);
 					Animate.enemyDisappear(secThirdRow, f);
@@ -65,7 +65,7 @@ public class HitDetection {
 				if(laser.intersects(enemy)) {
 					
 					SoundEffects.invaderKilled();
-					f.setIcon(Animate.ENEMY_HIT);
+					f.setIcon(Animate.enemy_Hit);
 					l.setVisible(false);
 					lasers.remove(l);
 					Animate.enemyDisappear(fourthRow, f);

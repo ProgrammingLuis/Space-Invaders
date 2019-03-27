@@ -15,13 +15,13 @@ import javax.swing.Timer;
 
 public class Movement {
 
-	private static boolean leftOrRight = true;
+	private static boolean isMovingRight = true;
 	
 	private static final Random RAND = new Random();
 	private static final int VAR_TO_SHOOT = 6; // edit this to change probability that aliens shoot
 	
 	/**
-	 * Movement of the aliens en masse.
+	 * Movement of the aliens en masse. BossMovement will activate if one alien is left.
 	 * @param firstRow
 	 * @param secThirdRow will animate the first, second, third, and fourth row of aliens.
 	 * @param fourthRow
@@ -76,7 +76,7 @@ public class Movement {
 				if(e.getKeyCode()== KeyEvent.VK_SPACE){
 					
 					JLabel laser = new JLabel("");
-					laser.setIcon(Animate.LASER);
+					laser.setIcon(Animate.laser);
 					laser.setBounds(spaceship.getX()+(Player.SPACESHIP_WIDTH/2), spaceship.getY()-11, Attack.LASER_WIDTH, Attack.LASER_HEIGHT);
 					
 					if(lasers.size()<2) {
@@ -111,23 +111,23 @@ public class Movement {
 		
 		Animate.animateAlien(l);
     	
-    	if(alienRow.get(alienRow.size()-1).getX()+Aliens.ALIEN_WIDTH>=513) leftOrRight = false;
+    	if(alienRow.get(alienRow.size()-1).getX()+Aliens.ALIEN_WIDTH>=513) isMovingRight = false;
     	if(alienRow.get(0).getX()<=100) {
     		
     		alienRow.get(0).setBounds(alienRow.get(0).getX()+12, l.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
-    		leftOrRight = true;
+    		isMovingRight = true;
     	}
     	
-    	if(leftOrRight) {
+    	if(isMovingRight) {
     		l.setBounds(l.getX()+6, l.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
-    	} else if(!leftOrRight) {
+    	} else if(!isMovingRight) {
     		l.setBounds(l.getX()-6, l.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
     	} 
     	
     	if(RAND.nextInt(VAR_TO_SHOOT) == 3) {
     		
     		JLabel laser = new JLabel("");
-			laser.setIcon(Animate.LASER);
+			laser.setIcon(Animate.laser);
 			laser.setBounds(l.getX()+(Aliens.ALIEN_WIDTH/2), l.getY()+6, Attack.LASER_WIDTH, Attack.LASER_HEIGHT);
 			if(enemyLasers.size()<3) enemyLasers.add(laser);
     		
@@ -149,27 +149,27 @@ public class Movement {
 			
 		}
 		
-		alien.setIcon(Animate.BOSS);
+		alien.setIcon(Animate.boss);
 		
-		if(alien.getX()+Aliens.ALIEN_WIDTH+15>=513) leftOrRight = false;
+		if(alien.getX()+Aliens.ALIEN_WIDTH+15>=513) isMovingRight = false;
 			if(alien.getX()-20<=100) {
 		            		
 		        alien.setBounds(alien.getX()+40, alien.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
-		        leftOrRight = true;
+		        isMovingRight = true;
 		            }
 		            	
-		if(leftOrRight) {
+		if(isMovingRight) {
 		    alien.setBounds(alien.getX()+20, alien.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
-		     } else if(!leftOrRight) {
+		     } else if(!isMovingRight) {
 		     alien.setBounds(alien.getX()-20, alien.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
 		     } 
 		            	
 		    if(RAND.nextInt(VAR_TO_SHOOT) > 2) {
 		            		
 		     JLabel laser = new JLabel("");
-		     laser.setIcon(Animate.LASER);
+		     laser.setIcon(Animate.laser);
 		     laser.setBounds(alien.getX()+(Aliens.ALIEN_WIDTH/2), alien.getY()+6, Attack.LASER_WIDTH, Attack.LASER_HEIGHT);
-		     if(!(enemyLasers.size()>6)) enemyLasers.add(laser);
+		     if(enemyLasers.size()<6) enemyLasers.add(laser);
 		            		
 		            	}
 		            	

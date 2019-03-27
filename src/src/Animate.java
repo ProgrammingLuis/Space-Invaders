@@ -1,7 +1,9 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.List;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.Timer;
@@ -14,23 +16,51 @@ import javax.swing.Timer;
 
 public class Animate {
 
-	public static final ImageIcon BOSS = new ImageIcon(ApplicationMain.class.getResource("/Resource/boss.png"), "boss");
+	public static ImageIcon boss;
 	
-	public static final ImageIcon SQUID_0 = new ImageIcon(ApplicationMain.class.getResource("/Resource/squid0.png"), "squid0");
-	public static final ImageIcon SQUID_1 = new ImageIcon(ApplicationMain.class.getResource("/Resource/squid1.png"), "squid1");
+	public static ImageIcon squid_0;
+	public static ImageIcon squid_1;
 	
-	public static final ImageIcon BIGSQUID_0 = new ImageIcon(ApplicationMain.class.getResource("/Resource/bigsquid0.png"), "bigsquid0");
-	public static final ImageIcon BIGSQUID_1 = new ImageIcon(ApplicationMain.class.getResource("/Resource/bigsquid1.png"), "bigsquid1");
+	public static ImageIcon bigsquid_0;
+	public static ImageIcon bigsquid_1;
 	
-	public static final ImageIcon ALIEN_0 = new ImageIcon(ApplicationMain.class.getResource("/Resource/alien0.png"), "alien0");
-	public static final ImageIcon ALIEN_1 = new ImageIcon(ApplicationMain.class.getResource("/Resource/alien1.png"), "alien1");
+	public static ImageIcon alien_0;
+	public static ImageIcon alien_1;
 	
-	public static final ImageIcon LASER = new ImageIcon(ApplicationMain.class.getResource("/Resource/laser.png"), "laser");
+	public static ImageIcon laser;
 	
-	public static final ImageIcon SPACESHIP = new ImageIcon(ApplicationMain.class.getResource("/Resource/spaceShip.png"), "spaceship");
+	public static ImageIcon spaceship;
 	
-	public static final ImageIcon ENEMY_HIT = new ImageIcon(ApplicationMain.class.getResource("/Resource/enemyHit.png"), "enemyHit");
-	public static final ImageIcon PLAYER_HIT = new ImageIcon(ApplicationMain.class.getResource("/Resource/spaceshipHit.png"), "playerHit");
+	public static ImageIcon enemy_Hit;
+	public static ImageIcon player_Hit;
+	
+	public static void createImages() {
+		
+		try {
+			boss = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/boss.png")), "boss");
+			
+			squid_0 = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/squid0.png")), "squid0");
+			squid_1 = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/squid1.png")), "squid1");
+			
+			bigsquid_0 = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/bigsquid0.png")), "bigsquid0");
+			bigsquid_1 = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/bigsquid1.png")), "bigsquid1");
+			
+			alien_0 = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/alien0.png")), "alien0");
+			alien_1 = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/alien1.png")), "alien1");
+			
+			laser = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/laser.png")), "laser");
+			
+			spaceship = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/spaceShip.png")), "spaceship");
+			
+			enemy_Hit = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/enemyHit.png")), "enemyHit");
+			player_Hit = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/spaceshipHit.png")), "playerHit");
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 	/**
 	 * Animates the alien by switching pictures.
@@ -38,18 +68,15 @@ public class Animate {
 	 */
 	public static void animateAlien(JLabel alien) {
 		
-		if(alien.getIcon()!=BOSS) {
+		if(alien.getIcon()==squid_0) alien.setIcon(squid_1);
+		else if(alien.getIcon()==squid_1) alien.setIcon(squid_0);
 		
-		if(alien.getIcon()==SQUID_0) alien.setIcon(SQUID_1);
-		else if(alien.getIcon()==SQUID_1) alien.setIcon(SQUID_0);
+		if(alien.getIcon()==bigsquid_0) alien.setIcon(bigsquid_1);
+		else if(alien.getIcon()==bigsquid_1) alien.setIcon(bigsquid_0);
 		
-		if(alien.getIcon()==BIGSQUID_0) alien.setIcon(BIGSQUID_1);
-		else if(alien.getIcon()==BIGSQUID_1) alien.setIcon(BIGSQUID_0);
-		
-		if(alien.getIcon()==ALIEN_0) alien.setIcon(ALIEN_1);
-		else if(alien.getIcon()==ALIEN_1) alien.setIcon(ALIEN_0);
-		
-		}
+		if(alien.getIcon()==alien_0) alien.setIcon(alien_1);
+		else if(alien.getIcon()==alien_1) alien.setIcon(alien_0);
+
 	}
 	
 	/**

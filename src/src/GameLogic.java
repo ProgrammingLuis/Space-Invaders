@@ -106,7 +106,7 @@ public class GameLogic {
 		
 		if(HitDetection.playerHit(enemyLasers, spaceship)){
 			
-			spaceship.setDisabledIcon(Animate.PLAYER_HIT);
+			spaceship.setDisabledIcon(Animate.player_Hit);
 			spaceship.setEnabled(false);
 			enemyLasers.clear();
 			

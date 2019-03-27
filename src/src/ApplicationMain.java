@@ -54,6 +54,7 @@ public class ApplicationMain {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					Animate.createImages();
 					ApplicationMain window = new ApplicationMain();
 					window.createWindow();
 					window.startMenu();
@@ -120,7 +121,7 @@ public class ApplicationMain {
 	 * @param startLabel Label needed to have start menu functionality.
 	 */
 	private void startGame(JLabel startLabel) {
-		
+
 		SoundEffects.theme();
 		
 		startLabel.setFont(new Font("Cambria Math", Font.PLAIN, 27));

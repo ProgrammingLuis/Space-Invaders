@@ -1,6 +1,4 @@
 import java.util.List;
-
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 
@@ -25,7 +23,7 @@ public class Player {
 		
 		layeredPane.setLayer(spaceship, 3);
 		Movement.playerMovement(spaceship, lasers);
-		spaceship.setIcon(new ImageIcon(ApplicationMain.class.getResource("/Resource/spaceShip.png")));
+		spaceship.setIcon(Animate.spaceship);
 		spaceship.setVisible(true);
 		spaceship.setEnabled(true);
 		spaceship.setBounds(278, 320, SPACESHIP_WIDTH, SPACESHIP_HEIGHT);
