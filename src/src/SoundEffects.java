@@ -1,5 +1,3 @@
-import java.io.File;
-import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
@@ -14,11 +12,11 @@ public class SoundEffects {
 
 	public static boolean playBossMusic = true;
 	
-	private static final String INVADER_KILLED = "src\\Resource\\invaderkilled.wav";  
-	private static final String PLAYER_DIED = "src\\Resource\\explosion.wav";  
-	private static final String PLAYER_SHOT = "src\\Resource\\shoot.wav";  
-	private static final String THEME = "src\\Resource\\spaceinvaders1.wav";  
-	private static final String BOSS = "src\\Resource\\ufo_lowpitch.wav";  
+	private static final String INVADER_KILLED = "/Resource/invaderkilled.wav";  
+	private static final String PLAYER_DIED = "/Resource/explosion.wav";  
+	private static final String PLAYER_SHOT = "/Resource/shoot.wav";  
+	private static final String THEME = "/Resource/spaceinvaders1.wav";  
+	private static final String BOSS = "/Resource/ufo_lowpitch.wav";  
 	
 	private static Clip invaderKilled;
 	private static Clip playerKilled;
@@ -72,9 +70,10 @@ public class SoundEffects {
 	 */
 	private static Clip createSoundTrack(Clip clip, String url, float decibels) {
 		
-		try{AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(url).getAbsoluteFile());
+		try{
 		clip = AudioSystem.getClip();
-		clip.open(audioInputStream);
+		clip.open(AudioSystem.getAudioInputStream(
+				ApplicationMain.class.getResource(url)));
 		FloatControl gainControl = 
 		(FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 		gainControl.setValue(decibels); // Set volume to decibels.
