@@ -96,7 +96,7 @@ public class HitDetection {
 			
 			Rectangle laser = new Rectangle(l.getX(),l.getY(),l.getWidth(),l.getHeight());
 			
-			if(laser.intersects(player)) {
+			if(laser.intersects(player) && spaceship.isEnabled()) {
 				
 				return true;
 			}
