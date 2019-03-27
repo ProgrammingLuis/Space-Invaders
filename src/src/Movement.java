@@ -14,11 +14,11 @@ import javax.swing.Timer;
 
 public class Movement {
 
-	static int picNum = 0;
-	static boolean leftOrRight = true;
+	private static int picNum = 0;
+	private static boolean leftOrRight = true;
 	
-	static final Random RAND = new Random();
-	static final int VAR_TO_SHOOT = 6; // edit this to change probability that aliens shoot
+	private static final Random RAND = new Random();
+	private static final int VAR_TO_SHOOT = 6; // edit this to change probability that aliens shoot
 	
 	/**
 	 * Animates the aliens with a swing timer and two different pictures decided by <code>picNum</code> and generates lasers with <code>VAR_TO_SHOOT</code>
