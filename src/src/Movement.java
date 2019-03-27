@@ -124,7 +124,7 @@ public class Movement {
 		            
 		        }
 		        };
-		    Timer timer = new Timer(500, task);
+		    Timer timer = new Timer(400, task);
 		    timer.setRepeats(true);
 		    timer.start();
 		
