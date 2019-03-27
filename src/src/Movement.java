@@ -60,7 +60,7 @@ public class Movement {
 		         
 		        	} 
 		        };
-		    Timer timer = new Timer(400, task);
+		    Timer timer = new Timer(350, task);
 		    timer.setRepeats(true);
 		    timer.start();
 		
