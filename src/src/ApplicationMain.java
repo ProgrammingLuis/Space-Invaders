@@ -21,32 +21,42 @@ public class ApplicationMain {
 	/**
 	 * Only static variable because it needed to be closed from outside of this class.
 	 */
-	
+
 	private static JFrame frmSpaceInvaders = new JFrame();
-	
+	private static int frmXPos  = ScaleRes.getScaledWidth(ScaleRes.INIT_FRM_POS, "frm");
+	private static int frmYPos = ScaleRes.getScaledHeight(ScaleRes.INIT_FRM_POS, "frm");
+
 	/**
 	 * Instance variables that will be initialized with other classes.
 	 */
-	
+
 	private JLabel spaceship = new JLabel();
 	private JLabel infoLabel = new JLabel("Coded by Luis");
 	private JLabel startLabel = new JLabel("Press SPACE to start.");
 	
-	private JPanel infoPanel = new JPanel(); 
+	private int startLabelXPos = ScaleRes.getXPos(ScaleRes.INIT_STRTLBL_POS);
+	private int startLabelYPos = ScaleRes.getYPos(ScaleRes.INIT_STRTLBL_POS);
+
+	private int startLabelWidth = ScaleRes.getScaledWidth(ScaleRes.INIT_STRT_LAB);
+	private int startLabelHeight = ScaleRes.getScaledHeight(ScaleRes.INIT_STRT_LAB);
 	
+	private int strtLabFontSize = ScaleRes.getScaledWidth(ScaleRes.INIT_STRT_FONT);
+	
+	private JPanel infoPanel = new JPanel(); 
+
 	private List<JLabel> firstRow = new ArrayList<JLabel>();
 	private List<JLabel> secThirdRow = new ArrayList<JLabel>();
 	private List<JLabel> fourthRow = new ArrayList<JLabel>();
 
 	private List<JLabel> lasers = new ArrayList<JLabel>();
 	private List<JLabel> enemyLasers = new ArrayList<JLabel>();
-	
+
 	private JLayeredPane layeredPane = new JLayeredPane();
 	private JLabel scoreLabel = new JLabel("Score: 0");
 	private JLabel youWon = new JLabel("YOU WON");
 	private JLabel gameOverLabel = new JLabel("YOU LOST");
 	private JLabel background = new JLabel();
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -54,9 +64,9 @@ public class ApplicationMain {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					frmSpaceInvaders.setBounds(frmXPos, frmYPos, ScaleRes.getScaledWidth(ScaleRes.INIT_FRAME), ScaleRes.getScaledHeight(ScaleRes.INIT_FRAME));
 					Animate.createImages();
 					ApplicationMain window = new ApplicationMain();
-					frmSpaceInvaders.setBounds(450, 150, 616, 474);
 					window.createWindow();
 					window.startMenu();
 					window.enemyMovement();
@@ -73,50 +83,50 @@ public class ApplicationMain {
 	 * Default Constructor.
 	 */
 	public ApplicationMain() {
-		
-		
+
+
 	}
 
 	/**
 	 * Initialize the contents of the game.
 	 */
 	private void initialize() {
-		
+
 		GameInfo.createInfoElements(infoPanel, infoLabel, scoreLabel, gameOverLabel, youWon, layeredPane);
-		
+
 		Aliens.createAliens(firstRow, secThirdRow, fourthRow, layeredPane);
 
 		Player.createPlayer(spaceship, lasers, layeredPane);
-	
-		
+
+
 	}
-	
+
 	private void createWindow() {
 		GameWindow.createWindow(frmSpaceInvaders, layeredPane, background);
 	}
-	
+
 	private void startMenu() {
 		startGame(startLabel);
 	}
-	
+
 	private void enemyMovement() {
-		
+
 		Movement.enemyMovement(firstRow, secThirdRow, fourthRow, enemyLasers);
-		
+
 	}
-	
+
 	private void playerShot() {
-		
+
 		Attack.playerShoot(lasers, firstRow, secThirdRow, fourthRow, layeredPane, scoreLabel, background, youWon, enemyLasers, spaceship);
 
 	}
-	
+
 	private void enemyShot() {
-		
+
 		Attack.enemyShoot(enemyLasers, spaceship, layeredPane, background, gameOverLabel);
-		
+
 	}
-	
+
 	/**
 	 * Starts game.
 	 * @param startLabel Label needed to have start menu functionality.
@@ -124,45 +134,45 @@ public class ApplicationMain {
 	private void startGame(JLabel startLabel) {
 
 		SoundEffects.theme();
-		
-		startLabel.setFont(new Font("Cambria Math", Font.PLAIN, 27));
-		startLabel.setBounds(190, 200, 245, 29);
+
+		startLabel.setFont(new Font("Cambria Math", Font.PLAIN, strtLabFontSize));
+		startLabel.setBounds(startLabelXPos, startLabelYPos, startLabelWidth, startLabelHeight);
 		layeredPane.setLayer(startLabel, 4);
 		startLabel.setEnabled(true);
 		startLabel.setVisible(true);
 		startLabel.setForeground(new Color(0, 255, 0));
 		layeredPane.add(startLabel);
-		
+
 		startLabel.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				
+
 				if(e.getKeyCode()== KeyEvent.VK_SPACE){
-					
+
 					SoundEffects.stopTheme();
 					startLabel.setEnabled(false);
 					startLabel.setVisible(false);
 					initialize();
 					SoundEffects.battle();
 				}
-				
-				
+
+
 			}
 		});
-		
+
 		startLabel.requestFocus();
-		
+
 	}
-	
+
 	/**
 	 * Resets the game by clearing the JFrame of all initialized components, so they can be reinitialized.
 	 */
 	public static void reset() {
-		
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					
+
 					frmSpaceInvaders.getContentPane().removeAll();
 					Animate.createImages();
 					ApplicationMain window = new ApplicationMain();
@@ -171,12 +181,12 @@ public class ApplicationMain {
 					window.enemyMovement();
 					window.playerShot();
 					window.enemyShot();
-					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-		
+
 	}
 }
