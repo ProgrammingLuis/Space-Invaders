@@ -38,7 +38,7 @@ public class Movement {
 	
 	private static final int ALIEN_VEL = ScaleRes.getScaledWidth(ScaleRes.INIT_ENEMY_VEL)+1;
 	private static final int BOSS_VEL = ScaleRes.getScaledWidth(ScaleRes.INIT_BOSS_VEL)+1;
-	private static final int PLAYER_VEL = ScaleRes.getScaledWidth(ScaleRes.INIT_PLAYER_VEL)+1;
+	private static final int PLAYER_VEL = ScaleRes.getScaledWidth(ScaleRes.INIT_PLAYER_VEL);
 
 	/**
 	 * Movement of the aliens en masse. BossMovement will activate if one alien is left.
