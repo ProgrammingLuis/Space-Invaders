@@ -9,6 +9,18 @@ import java.awt.Toolkit;
 public class ScaleRes implements GameModels{
 
 	/**
+	 * Change to change the scaling on screens with above 1920*1080 res.
+	 */
+	
+	private static final double SCALE_1080_PLUS = 2;
+	
+	/**
+	 * Change to change the scaling on screens with 1920*1080 res and below.
+	 */
+	
+	private static final double SCALE_1080_BELOW = 1.5;
+	
+	/**
 	 * Gets the current screen size of the user.
 	 */
 	
@@ -44,7 +56,7 @@ public class ScaleRes implements GameModels{
 		
 		double widthRatio = widthRatio(d);
 		if(CURRENT_SCREEN.getWidth()>INIT_SCREEN.getWidth()&&CURRENT_SCREEN.getHeight()>INIT_SCREEN.getHeight()) {
-		return (int) (widthRatio*CURRENT_SCREEN.getWidth()) * 2;} else return (int) (d.getWidth()* 1.5);
+		return (int) ((widthRatio*CURRENT_SCREEN.getWidth()) * SCALE_1080_PLUS);} else return (int) (d.getWidth()* SCALE_1080_BELOW);
 	}
 	
 	/**
@@ -71,7 +83,7 @@ public class ScaleRes implements GameModels{
 		double heightRatio = heightRatio(d);
 		
 		if(CURRENT_SCREEN.getWidth()>INIT_SCREEN.getWidth()&&CURRENT_SCREEN.getHeight()>INIT_SCREEN.getHeight()) {
-		return (int) (heightRatio*CURRENT_SCREEN.getHeight()) * 2;} else return (int) (d.getHeight()* 1.5);
+		return (int) ((heightRatio*CURRENT_SCREEN.getHeight()) * SCALE_1080_PLUS);} else return (int) (d.getHeight()* SCALE_1080_BELOW);
 	}
 	
 	/**
@@ -117,7 +129,7 @@ public class ScaleRes implements GameModels{
 		
 		double xRatio = getXRatio(d);
 		if(CURRENT_SCREEN.getWidth()>INIT_SCREEN.getWidth()&&CURRENT_SCREEN.getHeight()>INIT_SCREEN.getHeight()) {
-		return (int) (xRatio*getScaledWidth(INIT_FRAME)) * 2;} else return (int) (d.getWidth()* 1.5);
+		return (int) (xRatio*getScaledWidth(INIT_FRAME));} else return (int) (d.getWidth()* SCALE_1080_BELOW);
 	}
 	
 	/**
@@ -131,7 +143,7 @@ public class ScaleRes implements GameModels{
 		double yRatio = getYRatio(d);
 		
 		if(CURRENT_SCREEN.getWidth()>INIT_SCREEN.getWidth()&&CURRENT_SCREEN.getHeight()>INIT_SCREEN.getHeight()) {
-		return (int) (yRatio*getScaledHeight(INIT_FRAME)) * 2;} else return (int) (d.getHeight()* 1.5);
+		return (int) (yRatio*getScaledHeight(INIT_FRAME));} else return (int) (d.getHeight()* SCALE_1080_BELOW);
 	}
 
 }
