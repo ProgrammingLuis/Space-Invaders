@@ -21,7 +21,12 @@ public class Movement {
 	public static boolean playerMovingLeft = false;
 	
 	private static final Random RAND = new Random();
+	
 	private static final int VAR_TO_SHOOT = 6; // edit this to change probability that aliens shoot
+	
+	private static final int ALIEN_VEL = 6;
+	private static final int BOSS_VEL = 20;
+	private static final int PLAYER_VEL = 2;
 	
 	/**
 	 * Movement of the aliens en masse. BossMovement will activate if one alien is left.
@@ -128,13 +133,13 @@ public class Movement {
 		
 		if(playerMovingRight) {
 			
-			if(!(spaceship.getX()+Player.SPACESHIP_WIDTH+4>=513))spaceship.setBounds(spaceship.getX()+2, 320, Player.SPACESHIP_WIDTH, Player.SPACESHIP_HEIGHT);
+			if(!(spaceship.getX()+Player.SPACESHIP_WIDTH+4>=513))spaceship.setBounds(spaceship.getX()+PLAYER_VEL, 320, Player.SPACESHIP_WIDTH, Player.SPACESHIP_HEIGHT);
 			
 		}
 		
 		if(playerMovingLeft) {
 			
-			if(!(spaceship.getX()-4<=100))spaceship.setBounds(spaceship.getX()-2, 320, Player.SPACESHIP_WIDTH, Player.SPACESHIP_HEIGHT);
+			if(!(spaceship.getX()-4<=100))spaceship.setBounds(spaceship.getX()-PLAYER_VEL, 320, Player.SPACESHIP_WIDTH, Player.SPACESHIP_HEIGHT);
 			
 		}
 		
@@ -153,21 +158,21 @@ public class Movement {
     	if(alienRow.get(alienRow.size()-1).getX()+Aliens.ALIEN_WIDTH>=513) alienMovingRight = false;
     	if(alienRow.get(0).getX()<=100) {
     		
-    		alienRow.get(0).setBounds(alienRow.get(0).getX()+12, l.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
+    		alienRow.get(0).setBounds(alienRow.get(0).getX()+ALIEN_VEL*2, l.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
     		alienMovingRight = true;
     	}
     	
     	if(alienMovingRight) {
-    		l.setBounds(l.getX()+6, l.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
+    		l.setBounds(l.getX()+ALIEN_VEL, l.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
     	} else if(!alienMovingRight) {
-    		l.setBounds(l.getX()-6, l.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
+    		l.setBounds(l.getX()-ALIEN_VEL, l.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
     	} 
     	
     	if(RAND.nextInt(VAR_TO_SHOOT) == 3) {
     		
     		JLabel laser = new JLabel("");
 			laser.setIcon(Animate.laser);
-			laser.setBounds(l.getX()+(Aliens.ALIEN_WIDTH/2), l.getY()+6, Attack.LASER_WIDTH, Attack.LASER_HEIGHT);
+			laser.setBounds(l.getX()+(Aliens.ALIEN_WIDTH/2), l.getY()+ALIEN_VEL, Attack.LASER_WIDTH, Attack.LASER_HEIGHT);
 			if(enemyLasers.size()<5) enemyLasers.add(laser);
     		
     	}
@@ -191,16 +196,16 @@ public class Movement {
 		alien.setIcon(Animate.boss);
 		
 		if(alien.getX()+Aliens.ALIEN_WIDTH+15>=513) alienMovingRight = false;
-			if(alien.getX()-20<=100) {
+			if(alien.getX()-BOSS_VEL<=100) {
 		            		
-		        alien.setBounds(alien.getX()+40, alien.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
+		        alien.setBounds(alien.getX()+BOSS_VEL*2, alien.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
 		        alienMovingRight = true;
 		            }
 		            	
 		if(alienMovingRight) {
-		    alien.setBounds(alien.getX()+20, alien.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
+		    alien.setBounds(alien.getX()+BOSS_VEL, alien.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
 		     } else if(!alienMovingRight) {
-		     alien.setBounds(alien.getX()-20, alien.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
+		     alien.setBounds(alien.getX()-BOSS_VEL, alien.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
 		     } 
 		            	
 		    if(RAND.nextInt(VAR_TO_SHOOT) > 1) {
