@@ -56,6 +56,7 @@ public class ApplicationMain {
 				try {
 					Animate.createImages();
 					ApplicationMain window = new ApplicationMain();
+					frmSpaceInvaders.setBounds(450, 150, 616, 474);
 					window.createWindow();
 					window.startMenu();
 					window.enemyMovement();
@@ -80,8 +81,6 @@ public class ApplicationMain {
 	 * Initialize the contents of the game.
 	 */
 	private void initialize() {
-		
-		SoundEffects.battle();
 		
 		GameInfo.createInfoElements(infoPanel, infoLabel, scoreLabel, gameOverLabel, youWon, layeredPane);
 		
@@ -144,7 +143,7 @@ public class ApplicationMain {
 					startLabel.setEnabled(false);
 					startLabel.setVisible(false);
 					initialize();
-				
+					SoundEffects.battle();
 				}
 				
 				
@@ -165,7 +164,14 @@ public class ApplicationMain {
 				try {
 					
 					frmSpaceInvaders.getContentPane().removeAll();
-					main(null);
+					Animate.createImages();
+					ApplicationMain window = new ApplicationMain();
+					window.createWindow();
+					window.startMenu();
+					window.enemyMovement();
+					window.playerShot();
+					window.enemyShot();
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

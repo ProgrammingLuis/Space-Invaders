@@ -45,8 +45,8 @@ public class Animate {
 			squid_0 = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/squid0.png")), "squid0");
 			squid_1 = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/squid1.png")), "squid1");
 			
-			bigsquid_0 = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/bigsquid0.png")), "bigsquid0");
-			bigsquid_1 = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/bigsquid1.png")), "bigsquid1");
+			bigsquid_0 = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/bigSquid0.png")), "bigsquid0");
+			bigsquid_1 = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/bigSquid1.png")), "bigsquid1");
 			
 			alien_0 = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/alien0.png")), "alien0");
 			alien_1 = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/alien1.png")), "alien1");

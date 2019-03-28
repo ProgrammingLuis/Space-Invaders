@@ -30,7 +30,7 @@ public class GameWindow {
 		frmSpaceInvaders.getContentPane().setBackground(Color.BLACK);
 		frmSpaceInvaders.getContentPane().setLayout(null);
 		frmSpaceInvaders.setVisible(true);
-		frmSpaceInvaders.setBounds(450, 150, 616, 474);
+		frmSpaceInvaders.setBounds(frmSpaceInvaders.getX(), frmSpaceInvaders.getY(), 616, 474);
 		frmSpaceInvaders.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		layeredPane.setBounds(0, 0, 611, 446);
