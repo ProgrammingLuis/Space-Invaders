@@ -23,8 +23,8 @@ public class ApplicationMain {
 	 */
 
 	private static JFrame frmSpaceInvaders = new JFrame();
-	private static int frmXPos  = ScaleRes.getScaledWidth(ScaleRes.INIT_FRM_POS, "frm");
-	private static int frmYPos = ScaleRes.getScaledHeight(ScaleRes.INIT_FRM_POS, "frm");
+	private static int frmXPos  = ScaleRes.getJFrmXPos(ScaleRes.INIT_FRM_POS);
+	private static int frmYPos = ScaleRes.getJFrmYPos(ScaleRes.INIT_FRM_POS);
 
 	/**
 	 * Instance variables that will be initialized with other classes.

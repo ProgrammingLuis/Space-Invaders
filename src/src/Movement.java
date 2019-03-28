@@ -15,8 +15,16 @@ import javax.swing.Timer;
 
 public class Movement {
 
+	/**
+	 * Determines whether aliens will be moving left or right.
+	 */
+	
 	private static boolean alienMovingRight = true;
 
+	/**
+	 * Determines whether the player will be moving left or right.
+	 */
+	
 	public static boolean playerMovingRight = false;
 	public static boolean playerMovingLeft = false;
 
@@ -24,6 +32,10 @@ public class Movement {
 
 	private static final int VAR_TO_SHOOT = 6; // edit this to change probability that aliens shoot
 
+	/**
+	 * Entity model velocities
+	 */
+	
 	private static final int ALIEN_VEL = ScaleRes.getScaledWidth(ScaleRes.INIT_ENEMY_VEL)+1;
 	private static final int BOSS_VEL = ScaleRes.getScaledWidth(ScaleRes.INIT_BOSS_VEL)+1;
 	private static final int PLAYER_VEL = ScaleRes.getScaledWidth(ScaleRes.INIT_PLAYER_VEL)+1;
