@@ -123,7 +123,7 @@ public class ApplicationMain {
 
 	private void enemyShot() {
 
-		Attack.enemyShoot(enemyLasers, spaceship, layeredPane, background, gameOverLabel);
+		Attack.enemyShoot(enemyLasers, spaceship, layeredPane, background, gameOverLabel, firstRow, secThirdRow, fourthRow);
 
 	}
 

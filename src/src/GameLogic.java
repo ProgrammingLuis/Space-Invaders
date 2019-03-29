@@ -55,7 +55,7 @@ public class GameLogic {
 
 			Movement.playerMovingLeft = false;
 			Movement.playerMovingRight = false;
-
+			
 			SoundEffects.stopBattle();
 			SoundEffects.playBossMusic = true;
 			enemyLasers.clear();
@@ -107,7 +107,7 @@ public class GameLogic {
 	 * @param gameOverLabel label that will display losing message.
 	 */
 
-	public static void gameLost(JLabel spaceship, List<JLabel> enemyLasers, JLayeredPane layeredPane, JLabel background, JLabel gameOverLabel) {
+	public static void gameLost(JLabel spaceship, List<JLabel> enemyLasers, JLayeredPane layeredPane, JLabel background, JLabel gameOverLabel, List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow) {
 
 		if(HitDetection.playerHit(enemyLasers, spaceship)){
 
@@ -118,6 +118,10 @@ public class GameLogic {
 			Movement.playerMovingLeft = false;
 			Movement.playerMovingRight = false;
 
+			firstRow.clear();
+			secThirdRow.clear();
+			fourthRow.clear();
+			
 			SoundEffects.stopBattle();
 			SoundEffects.playBossMusic = true;
 

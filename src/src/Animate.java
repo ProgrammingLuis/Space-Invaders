@@ -17,7 +17,8 @@ import javax.swing.Timer;
 
 public class Animate {
 
-	public static ImageIcon boss;
+	public static ImageIcon boss0;
+	public static ImageIcon boss1;
 
 	public static ImageIcon squid_0;
 	public static ImageIcon squid_1;
@@ -44,13 +45,17 @@ public class Animate {
 
 		try {
 
-			background = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/Background.png")));
+			background = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/background.png")));
 			
 			background = resizeImage(background, GameWindow.backgroundWidth, GameWindow.backgroundHeight);
 			
-			boss = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/boss.png")), "boss");
+			boss0 = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/boss0.png")), "boss0");
 
-			boss = resizeImage(boss, Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
+			boss0 = resizeImage(boss0, Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
+			
+			boss1 = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/boss1.png")), "boss1");
+
+			boss1 = resizeImage(boss1, Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
 			
 			squid_0 = new ImageIcon(ImageIO.read(ApplicationMain.class.getResource("/Resource/squid0.png")), "squid0");
 			
@@ -111,6 +116,9 @@ public class Animate {
 	 */
 	public static void animateAlien(JLabel alien) {
 
+		if(alien.getIcon()==boss0) alien.setIcon(boss1);
+		else if(alien.getIcon()==boss1) alien.setIcon(boss0);
+		
 		if(alien.getIcon()==squid_0) alien.setIcon(squid_1);
 		else if(alien.getIcon()==squid_1) alien.setIcon(squid_0);
 

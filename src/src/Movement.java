@@ -167,8 +167,8 @@ public class Movement {
 
 		Animate.animateAlien(l);
 
-		if(alienRow.get(alienRow.size()-1).getX()+Aliens.ALIEN_WIDTH>=GameWindow.backgroundRightBound) alienMovingRight = false;
-		if(alienRow.get(0).getX()<=GameWindow.backgroundLeftBound) {
+		if(alienRow.get(alienRow.size()-1).getX()+Aliens.ALIEN_WIDTH+2>=GameWindow.backgroundRightBound || l.getX()+Aliens.ALIEN_WIDTH+2>=GameWindow.backgroundRightBound) alienMovingRight = false;
+		if(alienRow.get(0).getX()<=GameWindow.backgroundLeftBound || l.getX()<=GameWindow.backgroundLeftBound) {
 
 			alienRow.get(0).setBounds(alienRow.get(0).getX()+ALIEN_VEL*2, l.getY(), Aliens.ALIEN_WIDTH, Aliens.ALIEN_HEIGHT);
 			alienMovingRight = true;
@@ -201,11 +201,12 @@ public class Movement {
 		if(SoundEffects.playBossMusic) {
 
 			SoundEffects.boss();
+			alien.setIcon(Animate.boss0);
 			SoundEffects.playBossMusic = false;
 
 		}
-
-		alien.setIcon(Animate.boss);
+		
+		Animate.animateAlien(alien);
 
 		if(alien.getX()+Aliens.ALIEN_WIDTH+15>=GameWindow.backgroundRightBound) alienMovingRight = false;
 		if(alien.getX()-BOSS_VEL<=GameWindow.backgroundLeftBound) {

@@ -72,7 +72,7 @@ public class Attack {
 	 * @param background is needed for <code>GameLogic.gameLost()</code> method.
 	 * @param gameOverLabel is needed for <code>GameLogic.gameLost()</code> method.
 	 */
-	public static void enemyShoot(List<JLabel> enemyLasers, JLabel spaceship, JLayeredPane layeredPane, JLabel background, JLabel gameOverLabel) {
+	public static void enemyShoot(List<JLabel> enemyLasers, JLabel spaceship, JLayeredPane layeredPane, JLabel background, JLabel gameOverLabel, List<JLabel> firstRow, List<JLabel> secThirdRow, List<JLabel> fourthRow) {
 
 		ActionListener task = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -91,7 +91,7 @@ public class Attack {
 
 						}
 
-						GameLogic.gameLost(spaceship, enemyLasers, layeredPane, background, gameOverLabel);
+						GameLogic.gameLost(spaceship, enemyLasers, layeredPane, background, gameOverLabel, firstRow, secThirdRow, fourthRow);
 
 					}} catch(Exception ex) {
 						ex.printStackTrace();
